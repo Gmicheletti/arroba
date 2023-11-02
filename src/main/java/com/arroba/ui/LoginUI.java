@@ -19,7 +19,7 @@ public class LoginUI extends JFrame {
     private JLabel loginPlaceHolderPassword = new JLabel("Senha");
     private JPasswordField loginPassword = new JPasswordField();
     private JButton loginButton = new JButton("Login");
-    private JButton loginCreateAccount = new JButton("Criar conta");
+    private JButton loginCreateAccount = new JButton("Criar contaaaaaa");
 
     JLabel logoArroba = new JLabel(new ImageIcon("./src/main/resources/img/logorz.png"));    //LOGOS DO SISTEMA
 
