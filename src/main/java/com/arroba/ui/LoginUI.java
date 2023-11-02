@@ -5,10 +5,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class arrobaUI extends JFrame {
+public class LoginUI extends JFrame {
 
     //ELEMENTS LOGIN
-
     private JPanel body = new JPanel();
     private JPanel sectionLogin = new JPanel();
     private JPanel divCredential = new JPanel();
@@ -17,18 +16,19 @@ public class arrobaUI extends JFrame {
     private JPanel divBtns = new JPanel();
     private JLabel loginPlaceHolderUser= new JLabel("Usuário");
     private JTextField loginUserName = new JTextField();
-
     private JLabel loginPlaceHolderPassword = new JLabel("Senha");
     private JPasswordField loginPassword = new JPasswordField();
     private JButton loginButton = new JButton("Login");
     private JButton loginCreateAccount = new JButton("Criar conta");
 
-
-
-
     JLabel logoArroba = new JLabel(new ImageIcon("./src/main/resources/img/logorz.png"));    //LOGOS DO SISTEMA
 
-    public arrobaUI(){
+
+
+    public static void main(String[] args) {
+        new LoginUI();
+    }
+    public LoginUI(){
 
         divCredential.setLayout(new GridLayout(2, 1));
         divCredential.setBackground(new Color(255, 255, 255));
@@ -74,16 +74,31 @@ public class arrobaUI extends JFrame {
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                body.setVisible(false);
+                index();
             }
         });
 
 
+        loginCreateAccount.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                createAccount();
+            }
+        });
+    }
+
+    private void index() {
+        sectionLogin.setVisible(false);
+        HomeUI homeUI = new HomeUI();
     }
 
 
-    public static void main(String[] args) {
-        new arrobaUI();
+    private void createAccount() {
+        sectionLogin.setVisible(false);
+        CreateAccountUI createAccountUI = new CreateAccountUI();
     }
+
+
+
 
 }
