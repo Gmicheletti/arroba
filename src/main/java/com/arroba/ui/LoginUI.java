@@ -30,17 +30,6 @@ public class LoginUI extends JFrame {
     }
     public LoginUI(){
 
-        divCredential.setLayout(new GridLayout(2, 1));
-        divCredential.setBackground(new Color(255, 255, 255));
-        divCredential.add(divUser);
-        divCredential.add(divPassword);
-
-        divBtns.setLayout(new GridLayout(2, 2, 20, 25));
-        divBtns.setBackground(new Color(255, 255, 255));
-        divBtns.add(loginButton);
-        divBtns.add(loginCreateAccount);
-
-
         divUser.setBackground(new Color(255, 255, 255));
         divUser.add(loginPlaceHolderUser);
         divUser.add(loginUserName);
@@ -50,6 +39,17 @@ public class LoginUI extends JFrame {
         divPassword.add(loginPlaceHolderPassword);
         divPassword.add(loginPassword);
         loginPassword.setColumns(20);
+
+        divCredential.setLayout(new GridLayout(2, 1));
+        divCredential.setBackground(new Color(255, 255, 255));
+        divCredential.add(divUser);
+        divCredential.add(divPassword);
+
+        divBtns.setLayout(new GridLayout(2, 2, 20, 15));
+        divBtns.setBackground(new Color(255, 255, 255));
+        divBtns.add(loginButton);
+        divBtns.add(loginCreateAccount);
+
 
         sectionLogin.setLayout(new GridLayout(3, 3, 20, 25));
         sectionLogin.setBackground(new Color(255, 255, 255));
@@ -63,8 +63,8 @@ public class LoginUI extends JFrame {
 
 
 
-        this.setTitle("arrob@");
-        this.setSize(1100,800);
+        this.setTitle("arrob@ - Login");
+        this.setSize(500,800);
         this.getContentPane().add(body);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -88,14 +88,14 @@ public class LoginUI extends JFrame {
     }
 
     private void index() {
-        sectionLogin.setVisible(false);
         HomeUI homeUI = new HomeUI();
+        dispose();
     }
 
 
     private void createAccount() {
-        sectionLogin.setVisible(false);
         CreateAccountUI createAccountUI = new CreateAccountUI();
+        dispose();
     }
 
 
