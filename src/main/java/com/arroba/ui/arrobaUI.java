@@ -11,9 +11,11 @@ public class arrobaUI extends JFrame {
     //ELEMENTS LOGIN
 
     private JPanel windowLogin = new JPanel();
+    private JPanel divPai = new JPanel();
     private JPanel divCredential = new JPanel();
     private JPanel divUser = new JPanel();
     private JPanel divPassword = new JPanel();
+    private JPanel divBtns = new JPanel();
     private JLabel loginPlaceHolderUser= new JLabel("Usuário");
     private JTextField loginUserName = new JTextField();
 
@@ -29,33 +31,41 @@ public class arrobaUI extends JFrame {
 
     public arrobaUI(){
 
-        this.setTitle("arrob@");
-        this.setSize(600,600);
-
-
-        windowLogin.setLayout(new FlowLayout(FlowLayout.CENTER,200,50));
-        windowLogin.setBackground(new Color(255, 255, 255));
-        divUser.setBackground(new Color(255, 255, 255));
-        divPassword.setBackground(new Color(255, 255, 255));
+        divCredential.setLayout(new GridLayout(2, 1));
         divCredential.setBackground(new Color(255, 255, 255));
-
-        windowLogin.add(logoArroba);
-
-        loginUserName.setColumns(20);
-        divUser.add(loginPlaceHolderUser);
-        divUser.add(loginUserName);
-
-        loginPassword.setColumns(20);
-        divPassword.add(loginPlaceHolderPassword);
-        divPassword.add(loginPassword);
-
         divCredential.add(divUser);
         divCredential.add(divPassword);
-        windowLogin.add(divCredential);
 
-        windowLogin.add(loginButton);
-        windowLogin.add(loginCreateAccount);
+        divBtns.setLayout(new GridLayout(2, 2, 20, 25));
+        divBtns.setBackground(new Color(255, 255, 255));
+        divBtns.add(loginButton);
+        divBtns.add(loginCreateAccount);
 
+
+        divUser.setBackground(new Color(255, 255, 255));
+        divUser.add(loginPlaceHolderUser);
+        divUser.add(loginUserName);
+        loginUserName.setColumns(20);
+
+        divPassword.setBackground(new Color(255, 255, 255));
+        divPassword.add(loginPlaceHolderPassword);
+        divPassword.add(loginPassword);
+        loginPassword.setColumns(20);
+
+        divPai.setLayout(new GridLayout(3, 3, 20, 25));
+        divPai.setBackground(new Color(255, 255, 255));
+        divPai.add(logoArroba);
+        divPai.add(divCredential);
+        divPai.add(divBtns);
+
+        windowLogin.setLayout(new FlowLayout(FlowLayout.CENTER,200,190));
+        windowLogin.setBackground(new Color(255, 255, 255));
+        windowLogin.add(divPai);
+
+
+
+        this.setTitle("arrob@");
+        this.setSize(1100,800);
         this.getContentPane().add(windowLogin);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
