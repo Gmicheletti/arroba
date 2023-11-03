@@ -38,46 +38,48 @@ public class CreateAccountUI extends JFrame {
     }
     public CreateAccountUI(){
 
-        divName.setBackground(new Color(255, 255, 255));
+        Color color = new Color(220, 223, 255);
+
+        divName.setBackground(color);
         divName.add(loginPlaceHolderName);
         divName.add(loginUserName);
         loginUserName.setColumns(20);
 
-        divDate.setBackground(new Color(255, 255, 255));
+        divDate.setBackground(color);
         divDate.add(loginPlaceHolderDate);
         divDate.add(loginUserDate);
         loginUserDate.setColumns(14);
 
-        divEmail.setBackground(new Color(255, 255, 255));
+        divEmail.setBackground(color);
         divEmail.add(loginPlaceHolderEmail);
         divEmail.add(loginUserEmail);
         loginUserEmail.setColumns(20);
 
-        divPassword.setBackground(new Color(255, 255, 255));
+        divPassword.setBackground(color);
         divPassword.add(loginPlaceHolderPassword);
         divPassword.add(loginPassword);
         loginPassword.setColumns(20);
 
         divCredential.setLayout(new GridLayout(4, 1));
-        divCredential.setBackground(new Color(255, 255, 255));
+        divCredential.setBackground(color);
         divCredential.add(divName);
         divCredential.add(divDate);
         divCredential.add(divEmail);
         divCredential.add(divPassword);
 
         divBtns.setLayout(new GridLayout(3, 2, 10, 15));
-        divBtns.setBackground(new Color(255, 255, 255));
+        divBtns.setBackground(color);
         divBtns.add(createButton);
         divBtns.add(previousButton);
 
         sectionCreateAccount.setLayout(new GridLayout(3, 3, 20, 25));
-        sectionCreateAccount.setBackground(new Color(255, 255, 255));
+        sectionCreateAccount.setBackground(color);
         sectionCreateAccount.add(logoAccount);
         sectionCreateAccount.add(divCredential);
         sectionCreateAccount.add(divBtns);
 
         body.setLayout(new FlowLayout(FlowLayout.CENTER,200,190));
-        body.setBackground(new Color(255, 255, 255));
+        body.setBackground(color);
         body.add(sectionCreateAccount);
 
 

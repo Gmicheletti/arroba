@@ -120,7 +120,7 @@ public class User {
 
     public void registerUser (String nome, String sobrenome, String email, String senha, Integer telefone, char sexo, Date nascimento, String nacionalidade){
         //Tela de cadastro
-        System.in = setNome();
+//        System.in = setNome();
     }
 
 }

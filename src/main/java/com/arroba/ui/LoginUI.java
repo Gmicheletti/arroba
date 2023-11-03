@@ -19,7 +19,7 @@ public class LoginUI extends JFrame {
     private JLabel loginPlaceHolderPassword = new JLabel("Senha");
     private JPasswordField loginPassword = new JPasswordField();
     private JButton loginButton = new JButton("Login");
-    private JButton loginCreateAccount = new JButton("Criar contaaaaaa");
+    private JButton loginCreateAccount = new JButton("Criar conta");
 
     JLabel logoArroba = new JLabel(new ImageIcon("./src/main/resources/img/logorz.png"));    //LOGOS DO SISTEMA
 
@@ -30,35 +30,37 @@ public class LoginUI extends JFrame {
     }
     public LoginUI(){
 
-        divUser.setBackground(new Color(255, 255, 255));
+        Color color = new Color(220, 223, 255);
+
+        divUser.setBackground(color);
         divUser.add(loginPlaceHolderUser);
         divUser.add(loginUserName);
         loginUserName.setColumns(20);
 
-        divPassword.setBackground(new Color(255, 255, 255));
+        divPassword.setBackground(color);
         divPassword.add(loginPlaceHolderPassword);
         divPassword.add(loginPassword);
         loginPassword.setColumns(20);
 
         divCredential.setLayout(new GridLayout(2, 1));
-        divCredential.setBackground(new Color(255, 255, 255));
+        divCredential.setBackground(color);
         divCredential.add(divUser);
         divCredential.add(divPassword);
 
         divBtns.setLayout(new GridLayout(2, 2, 20, 15));
-        divBtns.setBackground(new Color(255, 255, 255));
+        divBtns.setBackground(color);
         divBtns.add(loginButton);
         divBtns.add(loginCreateAccount);
 
 
         sectionLogin.setLayout(new GridLayout(3, 3, 20, 25));
-        sectionLogin.setBackground(new Color(255, 255, 255));
+        sectionLogin.setBackground(color);
         sectionLogin.add(logoArroba);
         sectionLogin.add(divCredential);
         sectionLogin.add(divBtns);
 
         body.setLayout(new FlowLayout(FlowLayout.CENTER,200,190));
-        body.setBackground(new Color(255, 255, 255));
+        body.setBackground(color);
         body.add(sectionLogin);
 
 
