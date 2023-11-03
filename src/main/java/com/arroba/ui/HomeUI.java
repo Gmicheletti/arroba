@@ -14,43 +14,25 @@ public class HomeUI extends JFrame {
     private JPanel divMenu = new JPanel();
     private JPanel divContent = new JPanel();
     private JLabel jLabelTitulo = new JLabel("Bem-vindo, Nome Usuário"); //MENSAGEM
+    private JLabel jLabelPageHome = new JLabel(""); //MENSAGEM
     private JButton homeButton = new JButton("Home");
     private JButton perfilButton = new JButton("Meu Perfil");
     private JButton msgButton = new JButton("Mensagens");
     private JButton listUsereButton = new JButton("Meus amigos");
     private JButton findUsereButton = new JButton("Buscar Usuários");
-    private JButton deleteAccountUsereButton = new JButton("Deletar Contar");
+    private JButton deleteAccountUsereButton = new JButton("Deletar Conta");
     private JButton logoutButton = new JButton("Logout");
-
     JLabel logoArroba = new JLabel(new ImageIcon("./src/main/resources/img/arrobaicon.png"));    //LOGOS DO SISTEMA
-
-
 
     public static void main(String[] args) {
         new HomeUI();
     }
     public HomeUI(){
 
-        Color color = new Color(220, 223, 255);
+        homeButton();//INICIA A PAGINA COM O SECTION HOME VISIVEL
+        menu();//METODO RESPONSAVEL POR CONSTRUIR O MENU
 
-        FlowLayout layout = new FlowLayout(FlowLayout.CENTER);
-        layout.setVgap(20);
-        divMenu.setLayout(layout);
-        divMenu.setPreferredSize(new Dimension(200, 0));
-        divMenu.setBorder(new EmptyBorder(10, 10, 10, 10));
-        divMenu.setBackground(color);
-
-        divMenu.add(logoArroba).setPreferredSize(new Dimension(100, 100));
-        divMenu.add(jLabelTitulo);
-        jLabelTitulo.setHorizontalAlignment(SwingConstants.CENTER);
-        divMenu.add(homeButton).setPreferredSize(new Dimension(150, 35));
-        divMenu.add(perfilButton).setPreferredSize(new Dimension(150, 35));
-        divMenu.add(msgButton).setPreferredSize(new Dimension(150, 35));
-        divMenu.add(listUsereButton).setPreferredSize(new Dimension(150, 35));
-        divMenu.add(findUsereButton).setPreferredSize(new Dimension(150, 35));
-        divMenu.add(deleteAccountUsereButton).setPreferredSize(new Dimension(150, 35));
-        divMenu.add(logoutButton).setPreferredSize(new Dimension(150, 35));
-
+        divContent.setBackground(new Color(255, 255, 255));
         sectionHome.add(divMenu, BorderLayout.WEST);
         sectionHome.add(divContent, BorderLayout.CENTER);
 
@@ -65,7 +47,7 @@ public class HomeUI extends JFrame {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setVisible(true);
 
-
+        //BOTOES
         homeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -110,34 +92,92 @@ public class HomeUI extends JFrame {
                 logoutButton();
             }
         });
+    }
+
+    //METODOS
+    private void menu() {//METODO RESPONSAVEL POR CONSTRUIR O MENU
+
+        FlowLayout layout = new FlowLayout(FlowLayout.CENTER);
+        layout.setVgap(20);
+        divMenu.setLayout(layout);
+        divMenu.setPreferredSize(new Dimension(200, 0));
+        divMenu.setBorder(new EmptyBorder(10, 10, 10, 10));
+        divMenu.setBackground(new Color(220, 223, 255));
+
+        divMenu.add(logoArroba).setPreferredSize(new Dimension(100, 100));
+        divMenu.add(jLabelTitulo);
+        jLabelTitulo.setHorizontalAlignment(SwingConstants.CENTER);
+        divMenu.add(homeButton).setPreferredSize(new Dimension(150, 35));
+        divMenu.add(perfilButton).setPreferredSize(new Dimension(150, 35));
+        divMenu.add(msgButton).setPreferredSize(new Dimension(150, 35));
+        divMenu.add(listUsereButton).setPreferredSize(new Dimension(150, 35));
+        divMenu.add(findUsereButton).setPreferredSize(new Dimension(150, 35));
+        divMenu.add(deleteAccountUsereButton).setPreferredSize(new Dimension(150, 35));
+        divMenu.add(logoutButton).setPreferredSize(new Dimension(150, 35));
+    }
+    private void homeButton() {
+
+        divContent.removeAll();
+        divContent.revalidate();
+        jLabelPageHome.setText("Home");
+
+        divContent.add(jLabelPageHome);
+
 
     }
-    public void homeButton() {
-        divContent.setBackground(new Color(245, 0, 0));
-    }
     private void perfilButton() {
-        divContent.setBackground(new Color(11, 171, 39));
+
+        divContent.removeAll();
+        divContent.revalidate();
+
+        jLabelPageHome.setText("Meu Perfil");
+
+        divContent.add(jLabelPageHome);
+
     }
     private void msgButton() {
-        divContent.setBackground(new Color(42, 15, 131));
+
+        divContent.removeAll();
+        divContent.revalidate();
+
+        jLabelPageHome.setText("Mensagens");
+
+        divContent.add(jLabelPageHome);
+
     }
     private void listUsereButton() {
-        divContent.setBackground(new Color(250, 162, 2));
+
+        divContent.removeAll();
+        divContent.revalidate();
+
+        jLabelPageHome.setText("Meus amigos");
+
+        divContent.add(jLabelPageHome);
+
     }
     private void findUsereButton() {
-        divContent.setBackground(new Color(188, 2, 250));
+
+        divContent.removeAll();
+        divContent.revalidate();
+
+        jLabelPageHome.setText("Buscar Usuários");
+
+        divContent.add(jLabelPageHome);
+
     }
     private void deleteAccountUsereButton() {
-        divContent.setBackground(new Color(2, 250, 192));
+
+        divContent.removeAll();
+        divContent.revalidate();
+
+        jLabelPageHome.setText("Deletar Conta");
+
+        divContent.add(jLabelPageHome);
+
     }
     private void logoutButton() {
         LoginUI loginUI = new LoginUI();
         dispose();
     }
-
-
-
-
-
 
 }

@@ -104,7 +104,6 @@ public class CreateAccountUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 HomeUI homeUI = new HomeUI();
-                homeUI.homeButton();
                 dispose();
             }
         });

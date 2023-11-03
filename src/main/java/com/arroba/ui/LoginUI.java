@@ -89,7 +89,6 @@ public class LoginUI extends JFrame {
 
     private void index() {
         HomeUI homeUI = new HomeUI();
-        homeUI.homeButton();
         dispose();
     }
     private void createAccount() {
