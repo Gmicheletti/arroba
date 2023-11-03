@@ -11,7 +11,6 @@ public class CreateAccountUI extends JFrame {
     //ELEMENTS LOGIN
     private JPanel body = new JPanel();
     private JPanel sectionCreateAccount = new JPanel();
-    private JLabel jLabelTitulo = new JLabel("Cadastre-se. É rápido e fácil."); //MENSAGEM
     private JPanel divCredential = new JPanel();
     private JPanel divName = new JPanel();
     private JPanel divDate = new JPanel();
@@ -85,7 +84,7 @@ public class CreateAccountUI extends JFrame {
 
 
         this.setTitle("arrob@ - Criar Conta");
-        this.setSize(500,800);
+        this.setSize(1100,800);
         this.getContentPane().add(body);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -105,6 +104,7 @@ public class CreateAccountUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 HomeUI homeUI = new HomeUI();
+                homeUI.homeButton();
                 dispose();
             }
         });

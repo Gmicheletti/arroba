@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b5881eb6-71e7-40a8-be76-1a553aa8541b" name="Changes" comment="update front">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/arroba/ui/CreateAccountUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/arroba/ui/CreateAccountUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/arroba/ui/LoginUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/arroba/ui/LoginUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/arroba/ui/HomeUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/arroba/ui/HomeUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +73,9 @@
       <workItem from="1698936670925" duration="45000" />
       <workItem from="1698936776068" duration="20132000" />
       <workItem from="1698975646273" duration="835000" />
-      <workItem from="1698979796903" duration="951000" />
+      <workItem from="1698979796903" duration="1313000" />
+      <workItem from="1699019909881" duration="3273000" />
+      <workItem from="1699026327478" duration="6607000" />
     </task>
     <task id="LOCAL-00001" summary="teste">
       <option name="closed" value="true" />
@@ -84,7 +85,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698956829847</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="update front">
+      <option name="closed" value="true" />
+      <created>1698981035744</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1698981035744</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -92,6 +101,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="teste" />
-    <option name="LAST_COMMIT_MESSAGE" value="teste" />
+    <MESSAGE value="update front" />
+    <option name="LAST_COMMIT_MESSAGE" value="update front" />
   </component>
 </project>

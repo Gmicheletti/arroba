@@ -66,7 +66,7 @@ public class LoginUI extends JFrame {
 
 
         this.setTitle("arrob@ - Login");
-        this.setSize(500,800);
+        this.setSize(1100,800);
         this.getContentPane().add(body);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -79,8 +79,6 @@ public class LoginUI extends JFrame {
                 index();
             }
         });
-
-
         loginCreateAccount.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -91,10 +89,9 @@ public class LoginUI extends JFrame {
 
     private void index() {
         HomeUI homeUI = new HomeUI();
+        homeUI.homeButton();
         dispose();
     }
-
-
     private void createAccount() {
         CreateAccountUI createAccountUI = new CreateAccountUI();
         dispose();
