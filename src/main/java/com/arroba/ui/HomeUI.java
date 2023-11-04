@@ -15,21 +15,19 @@ public class HomeUI extends JFrame {
     private JPanel divContent = new JPanel();
     private JLabel jLabelTitulo = new JLabel("Bem-vindo, Nome Usuário"); //MENSAGEM
     private JLabel jLabelPageHome = new JLabel(""); //MENSAGEM
-    private JButton homeButton = new JButton("Home");
+    private JButton chatButton = new JButton("Chat");
     private JButton perfilButton = new JButton("Meu Perfil");
-    private JButton msgButton = new JButton("Mensagens");
     private JButton listUsereButton = new JButton("Meus amigos");
     private JButton findUsereButton = new JButton("Buscar Usuários");
-    private JButton deleteAccountUsereButton = new JButton("Deletar Conta");
     private JButton logoutButton = new JButton("Logout");
-    JLabel logoArroba = new JLabel(new ImageIcon("./src/main/resources/img/arrobaicon.png"));    //LOGOS DO SISTEMA
+    JLabel logoArroba = new JLabel(new ImageIcon("./src/main/resources/img/arrobaiconwhite.png"));    //LOGOS DO SISTEMA
 
     public static void main(String[] args) {
         new HomeUI();
     }
     public HomeUI(){
 
-        homeButton();//INICIA A PAGINA COM O SECTION HOME VISIVEL
+        chatButton();//INICIA A PAGINA COM O SECTION HOME VISIVEL
         menu();//METODO RESPONSAVEL POR CONSTRUIR O MENU
 
         divContent.setBackground(new Color(255, 255, 255));
@@ -48,13 +46,7 @@ public class HomeUI extends JFrame {
         this.setVisible(true);
 
         //BOTOES
-        homeButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-             homeButton();
-            }
 
-        });
         perfilButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -62,10 +54,10 @@ public class HomeUI extends JFrame {
             }
 
         });
-        msgButton.addActionListener(new ActionListener() {
+        chatButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                msgButton();
+                chatButton();
             }
         });
         listUsereButton.addActionListener(new ActionListener() {
@@ -80,12 +72,7 @@ public class HomeUI extends JFrame {
                 findUsereButton();
             }
         });
-        deleteAccountUsereButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                deleteAccountUsereButton();
-            }
-        });
+
         logoutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -102,27 +89,26 @@ public class HomeUI extends JFrame {
         divMenu.setLayout(layout);
         divMenu.setPreferredSize(new Dimension(200, 0));
         divMenu.setBorder(new EmptyBorder(10, 10, 10, 10));
-        divMenu.setBackground(new Color(220, 223, 255));
+        divMenu.setBackground(new Color(59, 74, 178));
 
         divMenu.add(logoArroba).setPreferredSize(new Dimension(100, 100));
-        divMenu.add(jLabelTitulo);
+        divMenu.add(jLabelTitulo).setForeground(Color.white);
         jLabelTitulo.setHorizontalAlignment(SwingConstants.CENTER);
-        divMenu.add(homeButton).setPreferredSize(new Dimension(150, 35));
+        divMenu.add(chatButton).setPreferredSize(new Dimension(150, 35));
         divMenu.add(perfilButton).setPreferredSize(new Dimension(150, 35));
-        divMenu.add(msgButton).setPreferredSize(new Dimension(150, 35));
         divMenu.add(listUsereButton).setPreferredSize(new Dimension(150, 35));
         divMenu.add(findUsereButton).setPreferredSize(new Dimension(150, 35));
-        divMenu.add(deleteAccountUsereButton).setPreferredSize(new Dimension(150, 35));
         divMenu.add(logoutButton).setPreferredSize(new Dimension(150, 35));
     }
-    private void homeButton() {
+
+    private void chatButton() {
 
         divContent.removeAll();
         divContent.revalidate();
-        jLabelPageHome.setText("Home");
+
+        jLabelPageHome.setText("Chat");
 
         divContent.add(jLabelPageHome);
-
 
     }
     private void perfilButton() {
@@ -131,16 +117,6 @@ public class HomeUI extends JFrame {
         divContent.revalidate();
 
         jLabelPageHome.setText("Meu Perfil");
-
-        divContent.add(jLabelPageHome);
-
-    }
-    private void msgButton() {
-
-        divContent.removeAll();
-        divContent.revalidate();
-
-        jLabelPageHome.setText("Mensagens");
 
         divContent.add(jLabelPageHome);
 
@@ -161,16 +137,6 @@ public class HomeUI extends JFrame {
         divContent.revalidate();
 
         jLabelPageHome.setText("Buscar Usuários");
-
-        divContent.add(jLabelPageHome);
-
-    }
-    private void deleteAccountUsereButton() {
-
-        divContent.removeAll();
-        divContent.revalidate();
-
-        jLabelPageHome.setText("Deletar Conta");
 
         divContent.add(jLabelPageHome);
 
