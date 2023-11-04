@@ -14,14 +14,14 @@ public class LoginUI extends JFrame {
     private JPanel divUser = new JPanel();
     private JPanel divPassword = new JPanel();
     private JPanel divBtns = new JPanel();
-    private JLabel loginPlaceHolderUser= new JLabel("Usuário");
+    private JLabel loginPlaceHolderUser= new JLabel("Usuário:");
     private JTextField loginUserName = new JTextField();
-    private JLabel loginPlaceHolderPassword = new JLabel("Senha");
+    private JLabel loginPlaceHolderPassword = new JLabel("Senha:");
     private JPasswordField loginPassword = new JPasswordField();
     private JButton loginButton = new JButton("Login");
     private JButton loginCreateAccount = new JButton("Criar conta");
 
-    JLabel logoArroba = new JLabel(new ImageIcon("./src/main/resources/img/logorz.png"));    //LOGOS DO SISTEMA
+    JLabel logoArroba = new JLabel(new ImageIcon("./src/main/resources/img/logowhite.png"));    //LOGOS DO SISTEMA
 
 
 
@@ -30,15 +30,15 @@ public class LoginUI extends JFrame {
     }
     public LoginUI(){
 
-        Color color = new Color(220, 223, 255);
+        Color color = new Color(59, 74, 178);
 
         divUser.setBackground(color);
-        divUser.add(loginPlaceHolderUser);
+        divUser.add(loginPlaceHolderUser).setForeground(Color.white);
         divUser.add(loginUserName);
         loginUserName.setColumns(20);
 
         divPassword.setBackground(color);
-        divPassword.add(loginPlaceHolderPassword);
+        divPassword.add(loginPlaceHolderPassword).setForeground(Color.white);
         divPassword.add(loginPassword);
         loginPassword.setColumns(20);
 
@@ -47,10 +47,12 @@ public class LoginUI extends JFrame {
         divCredential.add(divUser);
         divCredential.add(divPassword);
 
-        divBtns.setLayout(new GridLayout(2, 2, 20, 15));
+        FlowLayout layout = new FlowLayout(FlowLayout.CENTER);
+        layout.setVgap(20);
+        divBtns.setLayout(layout);
         divBtns.setBackground(color);
-        divBtns.add(loginButton);
-        divBtns.add(loginCreateAccount);
+        divBtns.add(loginCreateAccount).setPreferredSize(new Dimension(150, 35));
+        divBtns.add(loginButton).setPreferredSize(new Dimension(150, 35));
 
 
         sectionLogin.setLayout(new GridLayout(3, 3, 20, 25));

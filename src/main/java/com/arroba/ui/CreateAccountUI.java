@@ -17,18 +17,18 @@ public class CreateAccountUI extends JFrame {
     private JPanel divEmail = new JPanel();
     private JPanel divPassword = new JPanel();
     private JPanel divBtns = new JPanel();
-    private JLabel loginPlaceHolderName= new JLabel("Nome");
+    private JLabel loginPlaceHolderName= new JLabel("Nome:");
     private JTextField loginUserName = new JTextField();
-    private JLabel loginPlaceHolderDate= new JLabel("Data Nascimento");
+    private JLabel loginPlaceHolderDate= new JLabel("Data Nascimento:");
     private JTextField loginUserDate = new JTextField();
-    private JLabel loginPlaceHolderEmail= new JLabel("Email");
+    private JLabel loginPlaceHolderEmail= new JLabel("Email:");
     private JTextField loginUserEmail = new JTextField();
-    private JLabel loginPlaceHolderPassword = new JLabel("Senha");
+    private JLabel loginPlaceHolderPassword = new JLabel("Senha:");
     private JPasswordField loginPassword = new JPasswordField();
     private JButton createButton = new JButton("Criar Conta");
     private JButton previousButton = new JButton("Voltar");
 
-    JLabel logoAccount = new JLabel(new ImageIcon("./src/main/resources/img/createaccount.png"));    //LOGOS DO SISTEMA
+    JLabel logoAccount = new JLabel(new ImageIcon("./src/main/resources/img/createaccountwhite.png"));    //LOGOS DO SISTEMA
 
 
 
@@ -37,25 +37,25 @@ public class CreateAccountUI extends JFrame {
     }
     public CreateAccountUI(){
 
-        Color color = new Color(220, 223, 255);
+        Color color = new Color(59, 74, 178);
 
         divName.setBackground(color);
-        divName.add(loginPlaceHolderName);
+        divName.add(loginPlaceHolderName).setForeground(Color.white);
         divName.add(loginUserName);
         loginUserName.setColumns(20);
 
         divDate.setBackground(color);
-        divDate.add(loginPlaceHolderDate);
+        divDate.add(loginPlaceHolderDate).setForeground(Color.white);
         divDate.add(loginUserDate);
         loginUserDate.setColumns(14);
 
         divEmail.setBackground(color);
-        divEmail.add(loginPlaceHolderEmail);
+        divEmail.add(loginPlaceHolderEmail).setForeground(Color.white);
         divEmail.add(loginUserEmail);
         loginUserEmail.setColumns(20);
 
         divPassword.setBackground(color);
-        divPassword.add(loginPlaceHolderPassword);
+        divPassword.add(loginPlaceHolderPassword).setForeground(Color.white);
         divPassword.add(loginPassword);
         loginPassword.setColumns(20);
 
@@ -66,10 +66,13 @@ public class CreateAccountUI extends JFrame {
         divCredential.add(divEmail);
         divCredential.add(divPassword);
 
-        divBtns.setLayout(new GridLayout(3, 2, 10, 15));
+        FlowLayout layout = new FlowLayout(FlowLayout.CENTER);
+        layout.setVgap(20);
+        divBtns.setLayout(layout);
         divBtns.setBackground(color);
-        divBtns.add(createButton);
-        divBtns.add(previousButton);
+        divBtns.add(previousButton).setPreferredSize(new Dimension(150, 35));
+        divBtns.add(createButton).setPreferredSize(new Dimension(150, 35));
+
 
         sectionCreateAccount.setLayout(new GridLayout(3, 3, 20, 25));
         sectionCreateAccount.setBackground(color);
