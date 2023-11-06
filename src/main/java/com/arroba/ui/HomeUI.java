@@ -1,10 +1,14 @@
 package com.arroba.ui;
 
+import com.arroba.dominio.ListUser;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
+
 
 public class HomeUI extends JFrame {
 
@@ -16,19 +20,27 @@ public class HomeUI extends JFrame {
     private JLabel jLabelTitulo = new JLabel("Bem-vindo, Nome Usuário"); //MENSAGEM
     private JLabel jLabelPageHome = new JLabel(""); //MENSAGEM
     private JButton chatButton = new JButton("Chat");
+    private JPanel divRepeatingGroup = new JPanel();
+
     private JButton perfilButton = new JButton("Meu Perfil");
     private JButton listUsereButton = new JButton("Meus amigos");
     private JButton findUsereButton = new JButton("Buscar Usuários");
     private JButton logoutButton = new JButton("Logout");
+
     JLabel logoArroba = new JLabel(new ImageIcon("./src/main/resources/img/arrobaiconwhite.png"));    //LOGOS DO SISTEMA
+
 
     public static void main(String[] args) {
         new HomeUI();
+
+
     }
     public HomeUI(){
 
         chatButton();//INICIA A PAGINA COM O SECTION HOME VISIVEL
         menu();//METODO RESPONSAVEL POR CONSTRUIR O MENU
+
+
 
         divContent.setBackground(new Color(255, 255, 255));
         sectionHome.add(divMenu, BorderLayout.WEST);
@@ -99,51 +111,276 @@ public class HomeUI extends JFrame {
         divMenu.add(listUsereButton).setPreferredSize(new Dimension(150, 35));
         divMenu.add(findUsereButton).setPreferredSize(new Dimension(150, 35));
         divMenu.add(logoutButton).setPreferredSize(new Dimension(150, 35));
+
+
     }
-
     private void chatButton() {
-
-        divContent.removeAll();
-        divContent.revalidate();
+        removeContent();
 
         jLabelPageHome.setText("Chat");
+        jLabelPageHome.setBackground(new Color(15, 173, 53));
 
+        divContent.setLayout(new FlowLayout(FlowLayout.CENTER,400,20));
         divContent.add(jLabelPageHome);
+        divContent.add(divRepeatingGroup);
+
+        divRepeatingGroup.setLayout(new FlowLayout(FlowLayout.CENTER,400,20));
+        divRepeatingGroup.setPreferredSize(new Dimension(800, 700));
+        divRepeatingGroup.setBackground(new Color(255, 255, 255));
+
+        //DISPLAY LIST
+        HashMap<Integer, Object> hashMap = ListUser.main();
+
+        for (Integer idUser : hashMap.keySet()) {
+            HashMap<String, Object> dadosUser = (HashMap<String, Object>) hashMap.get(idUser);
+            int idChat = (int) dadosUser.get("idChat");
+            String nome = (String) dadosUser.get("Nome");
+
+            JLabel imgUser = new JLabel(new ImageIcon("./src/main/resources/img/imguser.png"));    //LOGOS DO SISTEMA
+
+            JPanel divRGCellPerfil = new JPanel();
+            divRGCellPerfil.setLayout(new FlowLayout(FlowLayout.LEFT,10,0));
+            divRGCellPerfil.setPreferredSize(new Dimension(390, 70));
+            divRGCellPerfil.setBackground(new Color(199, 205, 250));
+
+            JPanel divRGCellBtns = new JPanel();
+            divRGCellBtns.setLayout(new FlowLayout(FlowLayout.RIGHT,10,10));
+            divRGCellBtns.setPreferredSize(new Dimension(390, 70));
+            divRGCellBtns.setBackground(new Color(199, 205, 250));
+
+            JPanel divRGCell = new JPanel();
+            divRGCell.setLayout(new FlowLayout(FlowLayout.CENTER,10,10));
+            divRGCell.setPreferredSize(new Dimension(800, 75));
+            divRGCell.setBackground(new Color(199, 205, 250));
+
+            JLabel jLabelNameUser = new JLabel(nome); //MENSAGEM
+            JButton chatUserButton = new JButton(String.valueOf("Ler Mensagem"));
+
+            divRGCellPerfil.add(imgUser);
+            divRGCellPerfil.add(jLabelNameUser);
+            divRGCellBtns.add(chatUserButton);
+            divRGCell.add(divRGCellPerfil);
+            divRGCell.add(divRGCellBtns);
+            divRepeatingGroup.add(divRGCell);
+        }
+
+        refreshUI();
 
     }
     private void perfilButton() {
 
-        divContent.removeAll();
-        divContent.revalidate();
+        removeContent();
 
         jLabelPageHome.setText("Meu Perfil");
 
+         JPanel sectionCreateAccount = new JPanel();
+         JPanel divCredential = new JPanel();
+         JPanel divName = new JPanel();
+         JPanel divDate = new JPanel();
+         JPanel divEmail = new JPanel();
+         JPanel divPassword = new JPanel();
+         JPanel divBtns = new JPanel();
+         JLabel loginPlaceHolderName= new JLabel("Nome:");
+         JTextField loginUserName = new JTextField();
+         JLabel loginPlaceHolderDate= new JLabel("Data Nascimento:");
+         JTextField loginUserDate = new JTextField();
+         JLabel loginPlaceHolderEmail= new JLabel("Email:");
+         JTextField loginUserEmail = new JTextField();
+         JLabel loginPlaceHolderPassword = new JLabel("Senha:");
+         JPasswordField loginPassword = new JPasswordField();
+         JButton createButton = new JButton("Salvar Alterações");
+
+
+        JLabel logoAccount = new JLabel(new ImageIcon("./src/main/resources/img/arrobaicon.png"));    //LOGOS DO SISTEMA
+
+        Color color = new Color(255, 255, 255);
+
+        divName.setBackground(color);
+        divName.add(loginPlaceHolderName);
+        divName.add(loginUserName);
+        loginUserName.setColumns(20);
+
+        divDate.setBackground(color);
+        divDate.add(loginPlaceHolderDate);
+        divDate.add(loginUserDate);
+        loginUserDate.setColumns(14);
+
+        divEmail.setBackground(color);
+        divEmail.add(loginPlaceHolderEmail);
+        divEmail.add(loginUserEmail);
+        loginUserEmail.setColumns(20);
+
+        divPassword.setBackground(color);
+        divPassword.add(loginPlaceHolderPassword);
+        divPassword.add(loginPassword);
+        loginPassword.setColumns(20);
+
+        divCredential.setLayout(new GridLayout(4, 1));
+        divCredential.setBackground(color);
+        divCredential.add(divName);
+        divCredential.add(divDate);
+        divCredential.add(divEmail);
+        divCredential.add(divPassword);
+
+        FlowLayout layout = new FlowLayout(FlowLayout.CENTER);
+        layout.setVgap(20);
+        divBtns.setLayout(layout);
+        divBtns.setBackground(color);
+        divBtns.add(createButton).setPreferredSize(new Dimension(150, 35));
+
+        sectionCreateAccount.setLayout(new GridLayout(3, 3, 20, 25));
+        sectionCreateAccount.setBackground(color);
+        sectionCreateAccount.add(logoAccount);
+        sectionCreateAccount.add(divCredential);
+        sectionCreateAccount.add(divBtns);
+
         divContent.add(jLabelPageHome);
+        divContent.add(sectionCreateAccount);
+
+
+        createButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                chatButton();
+            }
+        });
+
+        refreshUI();
 
     }
     private void listUsereButton() {
+        removeContent();
 
-        divContent.removeAll();
-        divContent.revalidate();
+        jLabelPageHome.setText("Meus Amigos");
+        jLabelPageHome.setBackground(new Color(15, 173, 53));
 
-        jLabelPageHome.setText("Meus amigos");
-
+        divContent.setLayout(new FlowLayout(FlowLayout.CENTER,400,20));
         divContent.add(jLabelPageHome);
+        divContent.add(divRepeatingGroup);
+
+        divRepeatingGroup.setLayout(new FlowLayout(FlowLayout.CENTER,400,20));
+        divRepeatingGroup.setPreferredSize(new Dimension(800, 700));
+        divRepeatingGroup.setBackground(new Color(255, 255, 255));
+
+        //DISPLAY LIST
+        HashMap<Integer, Object> hashMap = ListUser.main();
+
+        for (Integer idUser : hashMap.keySet()) {
+            HashMap<String, Object> dadosUser = (HashMap<String, Object>) hashMap.get(idUser);
+            int idChat = (int) dadosUser.get("idChat");
+            String nome = (String) dadosUser.get("Nome");
+
+            JLabel imgUser = new JLabel(new ImageIcon("./src/main/resources/img/imguser.png"));    //LOGOS DO SISTEMA
+
+            JPanel divRGCellPerfil = new JPanel();
+            divRGCellPerfil.setLayout(new FlowLayout(FlowLayout.LEFT,10,0));
+            divRGCellPerfil.setPreferredSize(new Dimension(390, 70));
+            divRGCellPerfil.setBackground(new Color(199, 205, 250));
+
+            JPanel divRGCellBtns = new JPanel();
+            divRGCellBtns.setLayout(new FlowLayout(FlowLayout.RIGHT,10,10));
+            divRGCellBtns.setPreferredSize(new Dimension(390, 70));
+            divRGCellBtns.setBackground(new Color(199, 205, 250));
+
+            JPanel divRGCell = new JPanel();
+            divRGCell.setLayout(new FlowLayout(FlowLayout.CENTER,10,10));
+            divRGCell.setPreferredSize(new Dimension(800, 75));
+            divRGCell.setBackground(new Color(199, 205, 250));
+
+            JLabel jLabelNameUser = new JLabel(nome); //MENSAGEM
+            JButton removeButton = new JButton(String.valueOf("Remover"));
+            JButton chatUserButton = new JButton(String.valueOf("Chat"));
+
+            divRGCellPerfil.add(imgUser);
+            divRGCellPerfil.add(jLabelNameUser);
+            divRGCellBtns.add(removeButton);
+            divRGCellBtns.add(chatUserButton);
+            divRGCell.add(divRGCellPerfil);
+            divRGCell.add(divRGCellBtns);
+            divRepeatingGroup.add(divRGCell);
+        }
+
+        refreshUI();
 
     }
     private void findUsereButton() {
-
-        divContent.removeAll();
-        divContent.revalidate();
+        removeContent();
 
         jLabelPageHome.setText("Buscar Usuários");
 
-        divContent.add(jLabelPageHome);
+        JPanel divsearchBox = new JPanel();
+        divsearchBox.setBackground(new Color(255,255,255));
+        JTextField searchBox = new JTextField();
+        searchBox.setColumns(20);
+        divsearchBox.add(jLabelPageHome);
+        divsearchBox.add(searchBox);
+
+        divContent.setLayout(new FlowLayout(FlowLayout.CENTER,400,20));
+        divContent.add(divsearchBox);
+        divContent.add(divRepeatingGroup);
+
+        divRepeatingGroup.setLayout(new FlowLayout(FlowLayout.CENTER,400,20));
+        divRepeatingGroup.setPreferredSize(new Dimension(800, 500));
+        divRepeatingGroup.setBackground(new Color(255, 255, 255));
+
+        //DISPLAY LIST
+        HashMap<Integer, Object> hashMap = ListUser.main();
+
+        for (Integer idUser : hashMap.keySet()) {
+            HashMap<String, Object> dadosUser = (HashMap<String, Object>) hashMap.get(idUser);
+            int idChat = (int) dadosUser.get("idChat");
+            String nome = (String) dadosUser.get("Nome");
+
+            JLabel imgUser = new JLabel(new ImageIcon("./src/main/resources/img/imguser.png"));    //LOGOS DO SISTEMA
+
+            JPanel divRGCellPerfil = new JPanel();
+            divRGCellPerfil.setLayout(new FlowLayout(FlowLayout.LEFT,10,0));
+            divRGCellPerfil.setPreferredSize(new Dimension(390, 70));
+            divRGCellPerfil.setBackground(new Color(199, 205, 250));
+
+            JPanel divRGCellBtns = new JPanel();
+            divRGCellBtns.setLayout(new FlowLayout(FlowLayout.RIGHT,10,10));
+            divRGCellBtns.setPreferredSize(new Dimension(390, 70));
+            divRGCellBtns.setBackground(new Color(199, 205, 250));
+
+            JPanel divRGCell = new JPanel();
+            divRGCell.setLayout(new FlowLayout(FlowLayout.CENTER,10,10));
+            divRGCell.setPreferredSize(new Dimension(800, 75));
+            divRGCell.setBackground(new Color(199, 205, 250));
+
+            JLabel jLabelNameUser = new JLabel(nome); //MENSAGEM
+            JButton addUserButton = new JButton(String.valueOf("Adicionar"));
+
+            divRGCellPerfil.add(imgUser);
+            divRGCellPerfil.add(jLabelNameUser);
+            divRGCellBtns.add(addUserButton);
+            divRGCell.add(divRGCellPerfil);
+            divRGCell.add(divRGCellBtns);
+            divRepeatingGroup.add(divRGCell);
+        }
+
+        refreshUI();
 
     }
+
+
     private void logoutButton() {
         LoginUI loginUI = new LoginUI();
         dispose();
     }
 
+    private void removeContent() {
+        divContent.removeAll();
+        divRepeatingGroup.removeAll();
+    }
+
+    private void refreshUI() {
+        divContent.revalidate();
+        divContent.repaint();
+    }
+
 }
+
+
+
+
