@@ -30,6 +30,7 @@ public class HomeUI extends JFrame {
     JLabel logoArroba = new JLabel(new ImageIcon("./src/main/resources/img/arrobaiconwhite.png"));    //LOGOS DO SISTEMA
 
 
+
     public static void main(String[] args) {
         new HomeUI();
 
@@ -40,7 +41,9 @@ public class HomeUI extends JFrame {
         chatButton();//INICIA A PAGINA COM O SECTION HOME VISIVEL
         menu();//METODO RESPONSAVEL POR CONSTRUIR O MENU
 
-
+        Font fonte = jLabelPageHome.getFont();
+        Font fonteMaior = new Font(fonte.getName(), fonte.getStyle(), 24);
+        jLabelPageHome.setFont(fonteMaior);
 
         divContent.setBackground(new Color(255, 255, 255));
         sectionHome.add(divMenu, BorderLayout.WEST);
@@ -50,12 +53,18 @@ public class HomeUI extends JFrame {
         body.setBackground(new Color(255, 255, 255));
         body.add(sectionHome);
 
+
         this.setTitle("arrob@ - Home");
         this.setSize(1100,800);
+        this.setResizable(false);
         this.getContentPane().add(body);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setVisible(true);
+
+        //DEFINE PARAMETROS DE LAYOUT DO SHOW MENSAGEM DIALOG
+        UIManager.put("OptionPane.background", new Color(255, 255, 255));
+        UIManager.getLookAndFeelDefaults().put("Panel.background", new Color(255, 255, 255));
 
         //BOTOES
 
@@ -85,12 +94,25 @@ public class HomeUI extends JFrame {
             }
         });
 
+
         logoutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                logoutButton();
+                Icon iconLogout = new ImageIcon("./src/main/resources/img/exit.gif");
+                UIManager.put("OptionPane.questionIcon", iconLogout);
+                int confirmLogout = JOptionPane.showConfirmDialog(HomeUI.this, "Tem certeza de que deseja fazer logout?", "Confirmação de Logout", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+                if (confirmLogout == JOptionPane.YES_OPTION) {
+                    // O usuário clicou em "Sim", faça o logout
+                    logoutButton();
+                }
+
+
             }
         });
+
+
+
     }
 
     //METODOS
@@ -141,20 +163,20 @@ public class HomeUI extends JFrame {
             JPanel divRGCellPerfil = new JPanel();
             divRGCellPerfil.setLayout(new FlowLayout(FlowLayout.LEFT,10,0));
             divRGCellPerfil.setPreferredSize(new Dimension(390, 70));
-            divRGCellPerfil.setBackground(new Color(199, 205, 250));
+            divRGCellPerfil.setBackground(new Color(240, 244, 253));
 
             JPanel divRGCellBtns = new JPanel();
             divRGCellBtns.setLayout(new FlowLayout(FlowLayout.RIGHT,10,10));
             divRGCellBtns.setPreferredSize(new Dimension(390, 70));
-            divRGCellBtns.setBackground(new Color(199, 205, 250));
+            divRGCellBtns.setBackground(new Color(240, 244, 253));
 
             JPanel divRGCell = new JPanel();
             divRGCell.setLayout(new FlowLayout(FlowLayout.CENTER,10,10));
             divRGCell.setPreferredSize(new Dimension(800, 75));
-            divRGCell.setBackground(new Color(199, 205, 250));
+            divRGCell.setBackground(new Color(240, 244, 253));
 
             JLabel jLabelNameUser = new JLabel(nome); //MENSAGEM
-            JButton chatUserButton = new JButton(String.valueOf("Ler Mensagem"));
+            JButton chatUserButton = new JButton(String.valueOf("Chat"));
 
             divRGCellPerfil.add(imgUser);
             divRGCellPerfil.add(jLabelNameUser);
@@ -275,17 +297,17 @@ public class HomeUI extends JFrame {
             JPanel divRGCellPerfil = new JPanel();
             divRGCellPerfil.setLayout(new FlowLayout(FlowLayout.LEFT,10,0));
             divRGCellPerfil.setPreferredSize(new Dimension(390, 70));
-            divRGCellPerfil.setBackground(new Color(199, 205, 250));
+            divRGCellPerfil.setBackground(new Color(240, 244, 253));
 
             JPanel divRGCellBtns = new JPanel();
             divRGCellBtns.setLayout(new FlowLayout(FlowLayout.RIGHT,10,10));
             divRGCellBtns.setPreferredSize(new Dimension(390, 70));
-            divRGCellBtns.setBackground(new Color(199, 205, 250));
+            divRGCellBtns.setBackground(new Color(240, 244, 253));
 
             JPanel divRGCell = new JPanel();
             divRGCell.setLayout(new FlowLayout(FlowLayout.CENTER,10,10));
             divRGCell.setPreferredSize(new Dimension(800, 75));
-            divRGCell.setBackground(new Color(199, 205, 250));
+            divRGCell.setBackground(new Color(240, 244, 253));
 
             JLabel jLabelNameUser = new JLabel(nome); //MENSAGEM
             JButton removeButton = new JButton(String.valueOf("Remover"));
@@ -298,22 +320,48 @@ public class HomeUI extends JFrame {
             divRGCell.add(divRGCellPerfil);
             divRGCell.add(divRGCellBtns);
             divRepeatingGroup.add(divRGCell);
+
+            removeButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    Icon iconRemoveUser = new ImageIcon("./src/main/resources/img/removeUser.gif");
+                    UIManager.put("OptionPane.questionIcon", iconRemoveUser);
+                    int confirmRemoveUser = JOptionPane.showConfirmDialog(HomeUI.this, "Tem certeza de que deseja remover amizade?", "Confirmação de exclusão", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+                    if (confirmRemoveUser == JOptionPane.YES_OPTION) {
+                        // O usuário clicou em "Sim", faça o logout
+
+                    }
+                }
+            });
         }
 
         refreshUI();
+
+
+
+
 
     }
     private void findUsereButton() {
         removeContent();
 
-        jLabelPageHome.setText("Buscar Usuários");
+        jLabelPageHome.setText("Buscar Usuários: ");
 
         JPanel divsearchBox = new JPanel();
+        divsearchBox.setLayout(new FlowLayout(FlowLayout.CENTER,20,20));
         divsearchBox.setBackground(new Color(255,255,255));
+
         JTextField searchBox = new JTextField();
-        searchBox.setColumns(20);
+        searchBox.setColumns(30);
+
+        JButton searchButton = new JButton("Buscar");
+        JButton resetSearchButton = new JButton("Limpar");
+
         divsearchBox.add(jLabelPageHome);
         divsearchBox.add(searchBox);
+        divsearchBox.add(searchButton);
+        divsearchBox.add(resetSearchButton);
 
         divContent.setLayout(new FlowLayout(FlowLayout.CENTER,400,20));
         divContent.add(divsearchBox);
@@ -336,17 +384,17 @@ public class HomeUI extends JFrame {
             JPanel divRGCellPerfil = new JPanel();
             divRGCellPerfil.setLayout(new FlowLayout(FlowLayout.LEFT,10,0));
             divRGCellPerfil.setPreferredSize(new Dimension(390, 70));
-            divRGCellPerfil.setBackground(new Color(199, 205, 250));
+            divRGCellPerfil.setBackground(new Color(240, 244, 253));
 
             JPanel divRGCellBtns = new JPanel();
             divRGCellBtns.setLayout(new FlowLayout(FlowLayout.RIGHT,10,10));
             divRGCellBtns.setPreferredSize(new Dimension(390, 70));
-            divRGCellBtns.setBackground(new Color(199, 205, 250));
+            divRGCellBtns.setBackground(new Color(240, 244, 253));
 
             JPanel divRGCell = new JPanel();
             divRGCell.setLayout(new FlowLayout(FlowLayout.CENTER,10,10));
             divRGCell.setPreferredSize(new Dimension(800, 75));
-            divRGCell.setBackground(new Color(199, 205, 250));
+            divRGCell.setBackground(new Color(240, 244, 253));
 
             JLabel jLabelNameUser = new JLabel(nome); //MENSAGEM
             JButton addUserButton = new JButton(String.valueOf("Adicionar"));
@@ -361,19 +409,19 @@ public class HomeUI extends JFrame {
 
         refreshUI();
 
+
+
+
     }
-
-
     private void logoutButton() {
+
         LoginUI loginUI = new LoginUI();
         dispose();
     }
-
     private void removeContent() {
         divContent.removeAll();
         divRepeatingGroup.removeAll();
     }
-
     private void refreshUI() {
         divContent.revalidate();
         divContent.repaint();
