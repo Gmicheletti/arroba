@@ -1,5 +1,6 @@
 package com.arroba.ui;
 
+import com.arroba.dominio.ListMsgChat;
 import com.arroba.dominio.ListUser;
 
 import javax.swing.*;
@@ -21,7 +22,6 @@ public class HomeUI extends JFrame {
     private JLabel jLabelPageHome = new JLabel(""); //MENSAGEM
     private JButton chatButton = new JButton("Chat");
     private JPanel divRepeatingGroup = new JPanel();
-
     private JButton perfilButton = new JButton("Meu Perfil");
     private JButton listUsereButton = new JButton("Meus amigos");
     private JButton findUsereButton = new JButton("Buscar Usuários");
@@ -93,8 +93,6 @@ public class HomeUI extends JFrame {
                 findUsereButton();
             }
         });
-
-
         logoutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -110,8 +108,6 @@ public class HomeUI extends JFrame {
 
             }
         });
-
-
 
     }
 
@@ -184,7 +180,123 @@ public class HomeUI extends JFrame {
             divRGCell.add(divRGCellPerfil);
             divRGCell.add(divRGCellBtns);
             divRepeatingGroup.add(divRGCell);
+
+            chatUserButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    chatInButton();
+                }
+            });
+
+
         }
+
+        refreshUI();
+
+    }
+    private void chatInButton() {
+        removeContent();
+
+        jLabelPageHome.setText("Chat");
+        jLabelPageHome.setBackground(new Color(15, 173, 53));
+
+        divContent.setLayout(new FlowLayout(FlowLayout.CENTER,400,20));
+        divContent.add(jLabelPageHome);
+        divContent.add(divRepeatingGroup);
+
+        divRepeatingGroup.setLayout(new FlowLayout(FlowLayout.CENTER,400,20));
+        divRepeatingGroup.setPreferredSize(new Dimension(800, 600));
+        divRepeatingGroup.setBackground(new Color(255, 255, 255));
+
+        //DISPLAY LIST
+        HashMap<Integer, Object> hashMap = ListMsgChat.main();
+
+
+        for (Integer idChat : hashMap.keySet()) {
+            HashMap<String, Object> dadosChat = (HashMap<String, Object>) hashMap.get(idChat);
+            int idUser = (int) dadosChat.get("IdUser");
+            String nomeUser = (String) dadosChat.get("Nome");
+            String descMsg = (String) dadosChat.get("Desc");
+
+            if(idUser == 1){
+
+                JLabel imgUser = new JLabel(new ImageIcon("./src/main/resources/img/imguser.png"));    //LOGOS DO SISTEMA
+
+                JPanel divRGCellPerfil = new JPanel();
+                divRGCellPerfil.setLayout(new FlowLayout(FlowLayout.RIGHT,10,0));
+                divRGCellPerfil.setPreferredSize(new Dimension(800, 70));
+                divRGCellPerfil.setBackground(new Color(240, 244, 253));
+
+                JPanel divRGCellDesc = new JPanel();
+                divRGCellDesc.setLayout(new GridLayout(2, 1, 0, 0));
+                divRGCellDesc.setPreferredSize(new Dimension(300, 40));
+                divRGCellDesc.setBackground(new Color(240, 244, 253));
+
+                JPanel divRGCell = new JPanel();
+                divRGCell.setLayout(new FlowLayout(FlowLayout.CENTER,10,10));
+                divRGCell.setPreferredSize(new Dimension(800, 75));
+                divRGCell.setBackground(new Color(240, 244, 253));
+
+                JLabel jLabelNameUser = new JLabel(nomeUser); //MENSAGEM
+                JLabel jLabelDescMsg = new JLabel(descMsg); //MENSAGEM
+                jLabelNameUser.setHorizontalAlignment(SwingConstants.RIGHT);
+                jLabelDescMsg.setHorizontalAlignment(SwingConstants.RIGHT);
+
+
+                divRGCellDesc.add(jLabelNameUser);
+                divRGCellDesc.add(jLabelDescMsg);
+                divRGCell.add(divRGCellPerfil);
+                divRGCellPerfil.add(divRGCellDesc);
+                divRGCellPerfil.add(imgUser);
+                divRepeatingGroup.add(divRGCell);
+
+            } else{
+                JLabel imgUser = new JLabel(new ImageIcon("./src/main/resources/img/imguser.png"));    //LOGOS DO SISTEMA
+
+                JPanel divRGCellPerfil = new JPanel();
+                divRGCellPerfil.setLayout(new FlowLayout(FlowLayout.LEFT,10,0));
+                divRGCellPerfil.setPreferredSize(new Dimension(800, 70));
+                divRGCellPerfil.setBackground(new Color(240, 244, 253));
+
+                JPanel divRGCellDesc = new JPanel();
+                divRGCellDesc.setLayout(new GridLayout(2, 1, 0, 0));
+                divRGCellDesc.setPreferredSize(new Dimension(300, 40));
+                divRGCellDesc.setBackground(new Color(240, 244, 253));
+
+                JPanel divRGCell = new JPanel();
+                divRGCell.setLayout(new FlowLayout(FlowLayout.CENTER,10,10));
+                divRGCell.setPreferredSize(new Dimension(800, 75));
+                divRGCell.setBackground(new Color(240, 244, 253));
+
+                JLabel jLabelNameUser = new JLabel(nomeUser); //MENSAGEM
+                JLabel jLabelDescMsg = new JLabel(descMsg); //MENSAGEM
+
+
+
+                divRGCellPerfil.add(imgUser);
+                divRGCellDesc.add(jLabelNameUser);
+                divRGCellDesc.add(jLabelDescMsg);
+                divRGCell.add(divRGCellPerfil);
+                divRGCellPerfil.add(divRGCellDesc);
+                divRepeatingGroup.add(divRGCell);
+            }
+
+
+        }
+
+        JPanel divsendmsg = new JPanel();
+        divsendmsg.setLayout(new FlowLayout(FlowLayout.CENTER,20,20));
+        divsendmsg.setBackground(new Color(255,255,255));
+
+        JTextField sendMsgBox = new JTextField();
+        sendMsgBox.setColumns(60);
+
+        JButton searchButton = new JButton("Enviar");
+
+        divsendmsg.add(sendMsgBox);
+        divsendmsg.add(searchButton);
+
+        divContent.add(divsendmsg);
 
         refreshUI();
 
@@ -276,6 +388,7 @@ public class HomeUI extends JFrame {
         jLabelPageHome.setText("Meus Amigos");
         jLabelPageHome.setBackground(new Color(15, 173, 53));
 
+
         divContent.setLayout(new FlowLayout(FlowLayout.CENTER,400,20));
         divContent.add(jLabelPageHome);
         divContent.add(divRepeatingGroup);
@@ -283,6 +396,13 @@ public class HomeUI extends JFrame {
         divRepeatingGroup.setLayout(new FlowLayout(FlowLayout.CENTER,400,20));
         divRepeatingGroup.setPreferredSize(new Dimension(800, 700));
         divRepeatingGroup.setBackground(new Color(255, 255, 255));
+
+
+
+
+
+
+
 
         //DISPLAY LIST
         HashMap<Integer, Object> hashMap = ListUser.main();
@@ -334,13 +454,16 @@ public class HomeUI extends JFrame {
                     }
                 }
             });
+
+            chatUserButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    chatInButton();
+                }
+            });
         }
 
         refreshUI();
-
-
-
-
 
     }
     private void findUsereButton() {

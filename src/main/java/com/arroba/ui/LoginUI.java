@@ -6,7 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class LoginUI extends JFrame {
-
     //ELEMENTS LOGIN
     private JPanel body = new JPanel();
     private JPanel sectionLogin = new JPanel();
@@ -31,6 +30,8 @@ public class LoginUI extends JFrame {
     public LoginUI(){
 
         Color color = new Color(59, 74, 178);
+
+
 
         divUser.setBackground(color);
         divUser.add(loginPlaceHolderUser).setForeground(Color.white);

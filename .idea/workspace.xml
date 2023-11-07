@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5881eb6-71e7-40a8-be76-1a553aa8541b" name="Changes" comment="update front">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/exit.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/removeUser.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/ListMsgChat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/ListUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/ListUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/arroba/ui/HomeUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/arroba/ui/HomeUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/arroba/ui/LoginUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/arroba/ui/LoginUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,6 +64,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.arroba.dominio" />
       <recent name="com.arroba.ui" />
     </key>
   </component>
@@ -88,6 +90,7 @@
       <workItem from="1699273421515" duration="4389000" />
       <workItem from="1699281101607" duration="5997000" />
       <workItem from="1699301968510" duration="812000" />
+      <workItem from="1699393948710" duration="3927000" />
     </task>
     <task id="LOCAL-00001" summary="teste">
       <option name="closed" value="true" />

@@ -2,7 +2,7 @@ package com.arroba.dominio;
 
 import java.util.HashMap;
 
-public class ListUser {
+public class ListMsgChat {
     public static HashMap<Integer, Object> main() {
         // Crie um HashMap com chave do tipo Integer e valor do tipo Object.
         HashMap<Integer, Object> hashMap = createAndPopulateHashMap();
@@ -16,21 +16,18 @@ public class ListUser {
         HashMap<Integer, Object> hashMap = new HashMap<>();
 
         // Adicione vários elementos ao HashMap.
-        hashMap.put(1, createObject(11, "Guilherme Micheletti"));
-        hashMap.put(2, createObject(22, "Lucas Rodrigues"));
-        hashMap.put(3, createObject(33, "Lorena Nobre"));
-        hashMap.put(4, createObject(44, "Jefferson Caetano"));
-        hashMap.put(5, createObject(55, "Carlos Jardel"));
-
+        hashMap.put(1, createObject("Guilherme Micheletti", "Olá, tudo bem?",1));
+        hashMap.put(2, createObject("Lucas Rodrigues", "Olá Guilherme, tudo certo?",2));
 
         return hashMap;
     }
 
     // Método para criar um objeto com os campos desejados.
-    private static Object createObject(int idChat, String Nome) {
+    private static Object createObject(String Nome, String Desc, int idUser) {
         HashMap<String, Object> objetoAninhado = new HashMap<>();
-        objetoAninhado.put("idChat", idChat);
         objetoAninhado.put("Nome", Nome);
+        objetoAninhado.put("Desc", Desc);
+        objetoAninhado.put("IdUser", idUser);
         return objetoAninhado;
     }
 }
