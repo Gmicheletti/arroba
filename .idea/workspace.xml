@@ -5,16 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5881eb6-71e7-40a8-be76-1a553aa8541b" name="Changes" comment="update front">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/Auth.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/ListAllUsers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/ListMsgChat.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/ListUser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/Arroba.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/Arroba.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/arroba/ui/CreateAccountUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/arroba/ui/CreateAccountUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/arroba/ui/HomeUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/arroba/ui/HomeUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/arroba/ui/LoginUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/arroba/ui/LoginUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +49,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "guilherme",
+    "git-widget-placeholder": "lucas",
     "last_opened_file_path": "/Users/arthurmelgaco/Library/CloudStorage/GoogleDrive-gmicheletti10@gmail.com/Meu Drive/Guilherme/Faculdade/Sistema de Informacao/2023.2/linguagemProgramacao/arroba",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -146,16 +138,5 @@
     <MESSAGE value="update front" />
     <MESSAGE value="conexao bd hostinger" />
     <option name="LAST_COMMIT_MESSAGE" value="conexao bd hostinger" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/arroba/ui/HomeUI.java</url>
-          <line>540</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

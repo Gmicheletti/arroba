@@ -32,7 +32,7 @@ public class Arroba {
         System.out.print("Data de Nascimento: ");
         user.setNascimento(scn.nextLine());
 
-        System.out.println("Usuário c2astarado com sucesso.");
+        System.out.println("Usuário castarado com sucesso.");
 
     }
     public boolean checkUser(String email, String senha, LinkedList<User> userList) {

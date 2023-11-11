@@ -15,14 +15,15 @@ public class User {
     private String senha;
     private Integer telefone;
     private char sexo;
-    private Date nascimento;
+    private String nascimento;
     private String nacionalidade;
 
     public User() {
     }
 
-    public User(String nome, String sobrenome, String email, String senha, Integer telefone, char sexo, Date nascimento, String nacionalidade) {
+    public User(Integer codUser,String nome, String sobrenome, String email, String senha, Integer telefone, char sexo, String nascimento, String nacionalidade) {
 
+        this.codUser = codUser;
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.email = email;
@@ -31,6 +32,14 @@ public class User {
         this.sexo = sexo;
         this.nascimento = nascimento;
         this.nacionalidade = nacionalidade;
+    }
+
+    public Integer getCodUser() {
+        return codUser;
+    }
+
+    public void setCodUser(Integer codUser) {
+        this.codUser = codUser;
     }
 
     public String getNome() {
@@ -85,7 +94,7 @@ public class User {
 //        return nascimento;
 //    }
 
-    public void setNascimento(Date nascimento) {
+    public void setNascimento(String nascimento) {
         this.nascimento = nascimento;
     }
 
