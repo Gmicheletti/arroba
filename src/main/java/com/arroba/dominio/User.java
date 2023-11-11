@@ -1,31 +1,38 @@
 package com.arroba.dominio;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
 import java.util.Date;
 import java.util.Objects;
-
+@Entity
 public class User {
+    @Id
+    private Integer codUser;
     private String nome;
     private String sobrenome;
     private String email;
     private String senha;
     private Integer telefone;
     private char sexo;
-    private Date nascimento;
+//    private Date nascimento;
     private String nacionalidade;
 
     public User() {
     }
 
     public User(String nome, String sobrenome, String email, String senha, Integer telefone, char sexo, Date nascimento, String nacionalidade) {
+
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.email = email;
         this.senha = senha;
         this.telefone = telefone;
         this.sexo = sexo;
-        this.nascimento = nascimento;
+//        this.nascimento = nascimento;
         this.nacionalidade = nacionalidade;
     }
+
 
     public String getNome() {
         return nome;
@@ -75,13 +82,13 @@ public class User {
         this.sexo = sexo;
     }
 
-    public Date getNascimento() {
-        return nascimento;
-    }
+//    public Date getNascimento() {
+//        return nascimento;
+//    }
 
-    public void setNascimento(Date nascimento) {
-        this.nascimento = nascimento;
-    }
+//    public void setNascimento(Date nascimento) {
+//        this.nascimento = nascimento;
+//    }
 
     public String getNacionalidade() {
         return nacionalidade;
@@ -113,7 +120,7 @@ public class User {
                 ", senha='" + senha + '\'' +
                 ", telefone=" + telefone +
                 ", sexo=" + sexo +
-                ", nascimento=" + nascimento +
+//                ", nascimento=" + nascimento +
                 ", nacionalidade='" + nacionalidade + '\'' +
                 '}';
     }
@@ -122,5 +129,14 @@ public class User {
         //Tela de cadastro
 //        System.in = setNome();
     }
+
+    public void setCodUser(int codUser) {
+        this.codUser = codUser;
+    }
+
+    public int getCodUser() {
+        return codUser;
+    }
+
 
 }

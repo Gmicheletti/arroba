@@ -5,16 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5881eb6-71e7-40a8-be76-1a553aa8541b" name="Changes" comment="update front">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_11_23_15_00_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_11_23_15_00__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_03_11_23_15_01_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_03_11_23_15_01__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_11_23_15_02_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_11_23_15_02__Changes_.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/Auth.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/ListAllUsers.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/ListMsgChat.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/ListUser.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/arroba/ui/CreateAccountUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/arroba/ui/CreateAccountUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/arroba/ui/HomeUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/arroba/ui/HomeUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/arroba/ui/LoginUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/arroba/ui/LoginUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,23 +50,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;guilherme&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/arthurmelgaco/Library/CloudStorage/GoogleDrive-gmicheletti10@gmail.com/Meu Drive/Guilherme/Faculdade/Sistema de Informacao/2023.2/linguagemProgramacao/arroba&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "guilherme",
+    "last_opened_file_path": "/Users/arthurmelgaco/Library/CloudStorage/GoogleDrive-gmicheletti10@gmail.com/Meu Drive/Guilherme/Faculdade/Sistema de Informacao/2023.2/linguagemProgramacao/arroba",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/META-INF" />
@@ -145,7 +144,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="teste" />
     <MESSAGE value="update front" />
-    <option name="LAST_COMMIT_MESSAGE" value="update front" />
+    <MESSAGE value="conexao bd hostinger" />
+    <option name="LAST_COMMIT_MESSAGE" value="conexao bd hostinger" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

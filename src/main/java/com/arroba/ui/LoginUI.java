@@ -1,6 +1,6 @@
 package com.arroba.ui;
 
-import jakarta.persistence.Persistence;
+import com.arroba.dominio.Auth;
 
 import javax.swing.*;
 import java.awt.*;
@@ -25,23 +25,11 @@ public class LoginUI extends JFrame {
     JLabel logoArroba = new JLabel(new ImageIcon("./src/main/resources/img/logowhite.png"));    //LOGOS DO SISTEMA
 
 
-
     public static void main(String[] args) {
         new LoginUI();
 
-        var factory = Persistence.createEntityManagerFactory("arrob@-PU");
-
-        var em = factory.createEntityManager();
-
-
-
-        em.close();
-        factory.close();
-
-
     }
     public LoginUI(){
-
         Color color = new Color(59, 74, 178);
 
 
@@ -92,7 +80,8 @@ public class LoginUI extends JFrame {
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                index();
+                Auth auth = new Auth();
+                index(auth);
             }
         });
         loginCreateAccount.addActionListener(new ActionListener() {
@@ -103,8 +92,8 @@ public class LoginUI extends JFrame {
         });
     }
 
-    private void index() {
-        HomeUI homeUI = new HomeUI();
+    private void index(Auth auth) {
+        HomeUI homeUI = new HomeUI(auth);
         dispose();
     }
     private void createAccount() {

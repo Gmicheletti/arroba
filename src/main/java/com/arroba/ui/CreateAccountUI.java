@@ -1,5 +1,7 @@
 package com.arroba.ui;
 
+import com.arroba.dominio.Auth;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -106,7 +108,8 @@ public class CreateAccountUI extends JFrame {
         createButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                HomeUI homeUI = new HomeUI();
+                Auth auth = new Auth();
+                HomeUI homeUI = new HomeUI(auth);
                 dispose();
             }
         });
