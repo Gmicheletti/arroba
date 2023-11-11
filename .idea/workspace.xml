@@ -5,7 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5881eb6-71e7-40a8-be76-1a553aa8541b" name="Changes" comment="update front">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_11_23_15_00_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_11_23_15_00__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_03_11_23_15_01_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_03_11_23_15_01__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_11_23_15_02_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_11_23_15_02__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/arroba/ui/LoginUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/arroba/ui/LoginUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +69,9 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/META-INF" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.arroba.dominio" />
       <recent name="com.arroba.ui" />
@@ -87,6 +100,8 @@
       <workItem from="1699281101607" duration="5997000" />
       <workItem from="1699301968510" duration="812000" />
       <workItem from="1699393948710" duration="3927000" />
+      <workItem from="1699492565531" duration="439000" />
+      <workItem from="1699708274372" duration="1711000" />
     </task>
     <task id="LOCAL-00001" summary="teste">
       <option name="closed" value="true" />
@@ -104,7 +119,23 @@
       <option name="project" value="LOCAL" />
       <updated>1698981035744</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="update front">
+      <option name="closed" value="true" />
+      <created>1699398290747</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1699398290747</updated>
+    </task>
+    <task id="LOCAL-00004" summary="update front">
+      <option name="closed" value="true" />
+      <created>1699398348465</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1699398348465</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -115,5 +146,16 @@
     <MESSAGE value="teste" />
     <MESSAGE value="update front" />
     <option name="LAST_COMMIT_MESSAGE" value="update front" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/arroba/ui/HomeUI.java</url>
+          <line>540</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -1,5 +1,7 @@
 package com.arroba.ui;
 
+import jakarta.persistence.Persistence;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -26,6 +28,17 @@ public class LoginUI extends JFrame {
 
     public static void main(String[] args) {
         new LoginUI();
+
+        var factory = Persistence.createEntityManagerFactory("arrob@-PU");
+
+        var em = factory.createEntityManager();
+
+
+
+        em.close();
+        factory.close();
+
+
     }
     public LoginUI(){
 
