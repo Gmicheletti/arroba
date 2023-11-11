@@ -15,7 +15,7 @@ public class User {
     private String senha;
     private Integer telefone;
     private char sexo;
-//    private Date nascimento;
+    private Date nascimento;
     private String nacionalidade;
 
     public User() {
@@ -29,16 +29,15 @@ public class User {
         this.senha = senha;
         this.telefone = telefone;
         this.sexo = sexo;
-//        this.nascimento = nascimento;
+        this.nascimento = nascimento;
         this.nacionalidade = nacionalidade;
     }
-
 
     public String getNome() {
         return nome;
     }
 
-    public void setNome() {
+    public void setNome(String s) {
         this.nome = nome;
     }
 
@@ -86,9 +85,9 @@ public class User {
 //        return nascimento;
 //    }
 
-//    public void setNascimento(Date nascimento) {
-//        this.nascimento = nascimento;
-//    }
+    public void setNascimento(Date nascimento) {
+        this.nascimento = nascimento;
+    }
 
     public String getNacionalidade() {
         return nacionalidade;
@@ -120,23 +119,19 @@ public class User {
                 ", senha='" + senha + '\'' +
                 ", telefone=" + telefone +
                 ", sexo=" + sexo +
-//                ", nascimento=" + nascimento +
+                ", nascimento=" + nascimento +
                 ", nacionalidade='" + nacionalidade + '\'' +
                 '}';
     }
 
-    public void registerUser (String nome, String sobrenome, String email, String senha, Integer telefone, char sexo, Date nascimento, String nacionalidade){
-        //Tela de cadastro
-//        System.in = setNome();
+    public boolean checkUser() {
+        User[] userList = new User[0];
+        for (User user : userList) {
+            if (user.getEmail().equals(email) && user.getSenha().equals(senha)) {
+                return true; // Encontrou um usuário correspondente
+            }
+        }
+        return false; // Não
     }
-
-    public void setCodUser(int codUser) {
-        this.codUser = codUser;
-    }
-
-    public int getCodUser() {
-        return codUser;
-    }
-
 
 }
