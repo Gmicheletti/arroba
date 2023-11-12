@@ -559,7 +559,7 @@ public class HomeUI extends JFrame {
 
     }
     private void logoutButton(Auth auth) {
-        Auth.close();
+
         LoginUI loginUI = new LoginUI();
         dispose();
     }

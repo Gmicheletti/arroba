@@ -1,5 +1,6 @@
 package com.arroba.ui;
 
+import com.arroba.dominio.Arroba2;
 import com.arroba.dominio.Auth;
 
 import javax.swing.*;
@@ -16,7 +17,7 @@ public class LoginUI extends JFrame {
     private JPanel divPassword = new JPanel();
     private JPanel divBtns = new JPanel();
     private JLabel loginPlaceHolderUser= new JLabel("Usuário:");
-    private JTextField loginUserName = new JTextField();
+    private JTextField loginUserEmail = new JTextField();
     private JLabel loginPlaceHolderPassword = new JLabel("Senha:");
     private JPasswordField loginPassword = new JPasswordField();
     private JButton loginButton = new JButton("Login");
@@ -36,8 +37,8 @@ public class LoginUI extends JFrame {
 
         divUser.setBackground(color);
         divUser.add(loginPlaceHolderUser).setForeground(Color.white);
-        divUser.add(loginUserName);
-        loginUserName.setColumns(20);
+        divUser.add(loginUserEmail);
+        loginUserEmail.setColumns(20);
 
         divPassword.setBackground(color);
         divPassword.add(loginPlaceHolderPassword).setForeground(Color.white);
@@ -80,8 +81,16 @@ public class LoginUI extends JFrame {
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                String email = loginUserEmail.getText();
+                char[] senha = loginPassword.getPassword();
+
                 Auth auth = new Auth();
-                index(auth);
+
+                Arroba2 arroba = new Arroba2();
+
+                arroba.checkUser(email, senha, auth);
+
             }
         });
         loginCreateAccount.addActionListener(new ActionListener() {

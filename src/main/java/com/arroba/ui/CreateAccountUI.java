@@ -1,11 +1,14 @@
 package com.arroba.ui;
 
 import com.arroba.dominio.Auth;
+import com.arroba.dominio.CreateAccount;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.logging.Logger;
 
 
 public class CreateAccountUI extends JFrame {
@@ -108,8 +111,23 @@ public class CreateAccountUI extends JFrame {
         createButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 Auth auth = new Auth();
-                HomeUI homeUI = new HomeUI(auth);
+
+                String nome = loginUserName.getText();
+                String sobrenome = loginUserName.getText();
+                String nascimento = loginUserDate.getText();
+                String email = loginUserEmail.getText();
+                char[] senha = loginPassword.getPassword();
+                String telefone = "0";
+                String sexo = "";
+                String nacionalidade = "";
+
+                CreateAccount createAccount = new CreateAccount();
+
+                createAccount.registerUser(email, nacionalidade,nome,senha,sexo,sobrenome,telefone,nascimento, auth);
+
+                LoginUI loginUI = new LoginUI();
                 dispose();
             }
         });
