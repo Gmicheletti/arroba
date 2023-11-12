@@ -4,9 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b5881eb6-71e7-40a8-be76-1a553aa8541b" name="Changes" comment="update front">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/Arroba.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/Arroba.java" afterDir="false" />
+    <list default="true" id="b5881eb6-71e7-40a8-be76-1a553aa8541b" name="Changes" comment="update back">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/ArrobaSocialMedia.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/Arroba.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/arroba/ui/CreateAccountUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/arroba/ui/CreateAccountUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/arroba/ui/HomeUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/arroba/ui/HomeUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/arroba/ui/LoginUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/arroba/ui/LoginUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,6 +73,26 @@
       <recent name="com.arroba.ui" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration name="ArrobaSocialMedia" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.arroba.dominio.ArrobaSocialMedia" />
+      <module name="arroba" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.arroba.dominio.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ArrobaSocialMedia" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -126,7 +151,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699398348465</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="update back">
+      <option name="closed" value="true" />
+      <created>1699725537060</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1699725537061</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -137,6 +170,7 @@
     <MESSAGE value="teste" />
     <MESSAGE value="update front" />
     <MESSAGE value="conexao bd hostinger" />
-    <option name="LAST_COMMIT_MESSAGE" value="conexao bd hostinger" />
+    <MESSAGE value="update back" />
+    <option name="LAST_COMMIT_MESSAGE" value="update back" />
   </component>
 </project>
