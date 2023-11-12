@@ -14,6 +14,7 @@ import java.util.List;
 
 public class HomeUI extends JFrame {
 
+    JLabel logoArroba = new JLabel(new ImageIcon("./src/main/resources/img/arrobaiconwhite.png"));    //LOGOS DO SISTEMA
     //ELEMENTS LOGIN
     private JPanel body = new JPanel();
     private JPanel sectionHome = new JPanel(new BorderLayout());
@@ -28,14 +29,8 @@ public class HomeUI extends JFrame {
     private JButton findUsereButton = new JButton("Buscar Usuários");
     private JButton logoutButton = new JButton("Logout");
 
-    JLabel logoArroba = new JLabel(new ImageIcon("./src/main/resources/img/arrobaiconwhite.png"));    //LOGOS DO SISTEMA
 
-
-    public static void main(String[] args, Auth auth) {
-        new HomeUI(auth);
-    }
-
-    public HomeUI(Auth auth){
+    public HomeUI(Auth auth) {
 
         chatButton(auth);//INICIA A PAGINA COM O SECTION HOME VISIVEL
         menu();//METODO RESPONSAVEL POR CONSTRUIR O MENU
@@ -54,7 +49,7 @@ public class HomeUI extends JFrame {
 
 
         this.setTitle("arrob@ - Home");
-        this.setSize(1100,800);
+        this.setSize(1100, 800);
         this.setResizable(false);
         this.getContentPane().add(body);
         this.setLocationRelativeTo(null);
@@ -110,7 +105,9 @@ public class HomeUI extends JFrame {
 
     }
 
-
+    public static void main(String[] args, Auth auth) {
+        new HomeUI(auth);
+    }
 
     //METODOS
     private void menu() {//METODO RESPONSAVEL POR CONSTRUIR O MENU
@@ -133,17 +130,18 @@ public class HomeUI extends JFrame {
 
 
     }
+
     private void chatButton(Auth auth) {
         removeContent();
 
         jLabelPageHome.setText("Chat");
         jLabelPageHome.setBackground(new Color(15, 173, 53));
 
-        divContent.setLayout(new FlowLayout(FlowLayout.CENTER,400,20));
+        divContent.setLayout(new FlowLayout(FlowLayout.CENTER, 400, 20));
         divContent.add(jLabelPageHome);
         divContent.add(divRepeatingGroup);
 
-        divRepeatingGroup.setLayout(new FlowLayout(FlowLayout.CENTER,400,20));
+        divRepeatingGroup.setLayout(new FlowLayout(FlowLayout.CENTER, 400, 20));
         divRepeatingGroup.setPreferredSize(new Dimension(800, 700));
         divRepeatingGroup.setBackground(new Color(255, 255, 255));
 
@@ -156,25 +154,25 @@ public class HomeUI extends JFrame {
         for (User user : users) {
             int idUser = user.getCodUser();
             String nome = user.getNome();
-            String sobrenome = user.getSobrenome();
+
             String email = user.getEmail();
-            char sexo = user.getSexo();
+
             String nacionalidade = user.getNacionalidade();
 
             JLabel imgUser = new JLabel(new ImageIcon("./src/main/resources/img/imguser.png"));    //LOGOS DO SISTEMA
 
             JPanel divRGCellPerfil = new JPanel();
-            divRGCellPerfil.setLayout(new FlowLayout(FlowLayout.LEFT,10,0));
+            divRGCellPerfil.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 0));
             divRGCellPerfil.setPreferredSize(new Dimension(390, 70));
             divRGCellPerfil.setBackground(new Color(240, 244, 253));
 
             JPanel divRGCellBtns = new JPanel();
-            divRGCellBtns.setLayout(new FlowLayout(FlowLayout.RIGHT,10,10));
+            divRGCellBtns.setLayout(new FlowLayout(FlowLayout.RIGHT, 10, 10));
             divRGCellBtns.setPreferredSize(new Dimension(390, 70));
             divRGCellBtns.setBackground(new Color(240, 244, 253));
 
             JPanel divRGCell = new JPanel();
-            divRGCell.setLayout(new FlowLayout(FlowLayout.CENTER,10,10));
+            divRGCell.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
             divRGCell.setPreferredSize(new Dimension(800, 75));
             divRGCell.setBackground(new Color(240, 244, 253));
 
@@ -200,22 +198,22 @@ public class HomeUI extends JFrame {
 
         refreshUI();
     }
+
     private void chatInButton(Auth auth) {
         removeContent();
 
         jLabelPageHome.setText("Chat");
         jLabelPageHome.setBackground(new Color(15, 173, 53));
 
-        divContent.setLayout(new FlowLayout(FlowLayout.CENTER,400,20));
+        divContent.setLayout(new FlowLayout(FlowLayout.CENTER, 400, 20));
         divContent.add(jLabelPageHome);
         divContent.add(divRepeatingGroup);
 
-        divRepeatingGroup.setLayout(new FlowLayout(FlowLayout.CENTER,400,20));
+        divRepeatingGroup.setLayout(new FlowLayout(FlowLayout.CENTER, 400, 20));
         divRepeatingGroup.setPreferredSize(new Dimension(800, 600));
         divRepeatingGroup.setBackground(new Color(255, 255, 255));
 
         //DISPLAY LIST
-
 
 
         ListAllUsers listUser = new ListAllUsers(auth);
@@ -226,17 +224,17 @@ public class HomeUI extends JFrame {
         for (User user : users) {
             int idUser = user.getCodUser();
             String nome = user.getNome();
-            String sobrenome = user.getSobrenome();
+
             String email = user.getEmail();
-            char sexo = user.getSexo();
+
             String nacionalidade = user.getNacionalidade();
 
-            if(idUser == 1){
+            if (idUser == 1) {
 
                 JLabel imgUser = new JLabel(new ImageIcon("./src/main/resources/img/imguser.png"));    //LOGOS DO SISTEMA
 
                 JPanel divRGCellPerfil = new JPanel();
-                divRGCellPerfil.setLayout(new FlowLayout(FlowLayout.RIGHT,10,0));
+                divRGCellPerfil.setLayout(new FlowLayout(FlowLayout.RIGHT, 10, 0));
                 divRGCellPerfil.setPreferredSize(new Dimension(800, 70));
                 divRGCellPerfil.setBackground(new Color(240, 244, 253));
 
@@ -246,12 +244,12 @@ public class HomeUI extends JFrame {
                 divRGCellDesc.setBackground(new Color(240, 244, 253));
 
                 JPanel divRGCell = new JPanel();
-                divRGCell.setLayout(new FlowLayout(FlowLayout.CENTER,10,10));
+                divRGCell.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
                 divRGCell.setPreferredSize(new Dimension(800, 75));
                 divRGCell.setBackground(new Color(240, 244, 253));
 
                 JLabel jLabelNameUser = new JLabel(nome); //MENSAGEM
-                JLabel jLabelDescMsg = new JLabel(sobrenome); //MENSAGEM
+                JLabel jLabelDescMsg = new JLabel(nome); //MENSAGEM
                 jLabelNameUser.setHorizontalAlignment(SwingConstants.RIGHT);
                 jLabelDescMsg.setHorizontalAlignment(SwingConstants.RIGHT);
 
@@ -263,11 +261,11 @@ public class HomeUI extends JFrame {
                 divRGCellPerfil.add(imgUser);
                 divRepeatingGroup.add(divRGCell);
 
-            } else{
+            } else {
                 JLabel imgUser = new JLabel(new ImageIcon("./src/main/resources/img/imguser.png"));    //LOGOS DO SISTEMA
 
                 JPanel divRGCellPerfil = new JPanel();
-                divRGCellPerfil.setLayout(new FlowLayout(FlowLayout.LEFT,10,0));
+                divRGCellPerfil.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 0));
                 divRGCellPerfil.setPreferredSize(new Dimension(800, 70));
                 divRGCellPerfil.setBackground(new Color(240, 244, 253));
 
@@ -277,13 +275,12 @@ public class HomeUI extends JFrame {
                 divRGCellDesc.setBackground(new Color(240, 244, 253));
 
                 JPanel divRGCell = new JPanel();
-                divRGCell.setLayout(new FlowLayout(FlowLayout.CENTER,10,10));
+                divRGCell.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
                 divRGCell.setPreferredSize(new Dimension(800, 75));
                 divRGCell.setBackground(new Color(240, 244, 253));
 
                 JLabel jLabelNameUser = new JLabel(nome); //MENSAGEM
-                JLabel jLabelDescMsg = new JLabel(sobrenome); //MENSAGEM
-
+                JLabel jLabelDescMsg = new JLabel(nome); //MENSAGEM
 
 
                 divRGCellPerfil.add(imgUser);
@@ -298,8 +295,8 @@ public class HomeUI extends JFrame {
         }
 
         JPanel divsendmsg = new JPanel();
-        divsendmsg.setLayout(new FlowLayout(FlowLayout.CENTER,20,20));
-        divsendmsg.setBackground(new Color(255,255,255));
+        divsendmsg.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 20));
+        divsendmsg.setBackground(new Color(255, 255, 255));
 
         JTextField sendMsgBox = new JTextField();
         sendMsgBox.setColumns(60);
@@ -314,28 +311,29 @@ public class HomeUI extends JFrame {
         refreshUI();
 
     }
+
     private void perfilButton(Auth auth) {
 
         removeContent();
 
         jLabelPageHome.setText("Meu Perfil");
 
-         JPanel sectionCreateAccount = new JPanel();
-         JPanel divCredential = new JPanel();
-         JPanel divName = new JPanel();
-         JPanel divDate = new JPanel();
-         JPanel divEmail = new JPanel();
-         JPanel divPassword = new JPanel();
-         JPanel divBtns = new JPanel();
-         JLabel loginPlaceHolderName= new JLabel("Nome:");
-         JTextField loginUserName = new JTextField();
-         JLabel loginPlaceHolderDate= new JLabel("Data Nascimento:");
-         JTextField loginUserDate = new JTextField();
-         JLabel loginPlaceHolderEmail= new JLabel("Email:");
-         JTextField loginUserEmail = new JTextField();
-         JLabel loginPlaceHolderPassword = new JLabel("Senha:");
-         JPasswordField loginPassword = new JPasswordField();
-         JButton createButton = new JButton("Salvar Alterações");
+        JPanel sectionCreateAccount = new JPanel();
+        JPanel divCredential = new JPanel();
+        JPanel divName = new JPanel();
+        JPanel divDate = new JPanel();
+        JPanel divEmail = new JPanel();
+        JPanel divPassword = new JPanel();
+        JPanel divBtns = new JPanel();
+        JLabel loginPlaceHolderName = new JLabel("Nome:");
+        JTextField loginUserName = new JTextField();
+        JLabel loginPlaceHolderDate = new JLabel("Data Nascimento:");
+        JTextField loginUserDate = new JTextField();
+        JLabel loginPlaceHolderEmail = new JLabel("Email:");
+        JTextField loginUserEmail = new JTextField();
+        JLabel loginPlaceHolderPassword = new JLabel("Senha:");
+        JPasswordField loginPassword = new JPasswordField();
+        JButton createButton = new JButton("Salvar Alterações");
 
 
         JLabel logoAccount = new JLabel(new ImageIcon("./src/main/resources/img/arrobaicon.png"));    //LOGOS DO SISTEMA
@@ -395,6 +393,7 @@ public class HomeUI extends JFrame {
         refreshUI();
 
     }
+
     private void listUsereButton(Auth auth) {
         removeContent();
 
@@ -402,14 +401,13 @@ public class HomeUI extends JFrame {
         jLabelPageHome.setBackground(new Color(15, 173, 53));
 
 
-        divContent.setLayout(new FlowLayout(FlowLayout.CENTER,400,20));
+        divContent.setLayout(new FlowLayout(FlowLayout.CENTER, 400, 20));
         divContent.add(jLabelPageHome);
         divContent.add(divRepeatingGroup);
 
-        divRepeatingGroup.setLayout(new FlowLayout(FlowLayout.CENTER,400,20));
+        divRepeatingGroup.setLayout(new FlowLayout(FlowLayout.CENTER, 400, 20));
         divRepeatingGroup.setPreferredSize(new Dimension(800, 700));
         divRepeatingGroup.setBackground(new Color(255, 255, 255));
-
 
 
         ListAllUsers listUser = new ListAllUsers(auth);
@@ -420,30 +418,30 @@ public class HomeUI extends JFrame {
         for (User user : users) {
             int idUser = user.getCodUser();
             String nome = user.getNome();
-            String sobrenome = user.getSobrenome();
+
             String email = user.getEmail();
-            char sexo = user.getSexo();
+
             String nacionalidade = user.getNacionalidade();
 
 
             JLabel imgUser = new JLabel(new ImageIcon("./src/main/resources/img/imguser.png"));    //LOGOS DO SISTEMA
 
             JPanel divRGCellPerfil = new JPanel();
-            divRGCellPerfil.setLayout(new FlowLayout(FlowLayout.LEFT,10,0));
+            divRGCellPerfil.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 0));
             divRGCellPerfil.setPreferredSize(new Dimension(390, 70));
             divRGCellPerfil.setBackground(new Color(240, 244, 253));
 
             JPanel divRGCellBtns = new JPanel();
-            divRGCellBtns.setLayout(new FlowLayout(FlowLayout.RIGHT,10,10));
+            divRGCellBtns.setLayout(new FlowLayout(FlowLayout.RIGHT, 10, 10));
             divRGCellBtns.setPreferredSize(new Dimension(390, 70));
             divRGCellBtns.setBackground(new Color(240, 244, 253));
 
             JPanel divRGCell = new JPanel();
-            divRGCell.setLayout(new FlowLayout(FlowLayout.CENTER,10,10));
+            divRGCell.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
             divRGCell.setPreferredSize(new Dimension(800, 75));
             divRGCell.setBackground(new Color(240, 244, 253));
 
-            JLabel jLabelNameUser = new JLabel(nome + " " + sobrenome); //MENSAGEM
+            JLabel jLabelNameUser = new JLabel(nome + " " + nome); //MENSAGEM
             JButton removeButton = new JButton(String.valueOf("Remover"));
             JButton chatUserButton = new JButton(String.valueOf("Chat"));
 
@@ -480,16 +478,16 @@ public class HomeUI extends JFrame {
         refreshUI();
 
 
-
     }
+
     private void findUsereButton(Auth auth) {
         removeContent();
 
         jLabelPageHome.setText("Buscar Usuários: ");
 
         JPanel divsearchBox = new JPanel();
-        divsearchBox.setLayout(new FlowLayout(FlowLayout.CENTER,20,20));
-        divsearchBox.setBackground(new Color(255,255,255));
+        divsearchBox.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 20));
+        divsearchBox.setBackground(new Color(255, 255, 255));
 
         JTextField searchBox = new JTextField();
         searchBox.setColumns(30);
@@ -502,11 +500,11 @@ public class HomeUI extends JFrame {
         divsearchBox.add(searchButton);
         divsearchBox.add(resetSearchButton);
 
-        divContent.setLayout(new FlowLayout(FlowLayout.CENTER,400,20));
+        divContent.setLayout(new FlowLayout(FlowLayout.CENTER, 400, 20));
         divContent.add(divsearchBox);
         divContent.add(divRepeatingGroup);
 
-        divRepeatingGroup.setLayout(new FlowLayout(FlowLayout.CENTER,400,20));
+        divRepeatingGroup.setLayout(new FlowLayout(FlowLayout.CENTER, 400, 20));
         divRepeatingGroup.setPreferredSize(new Dimension(800, 500));
         divRepeatingGroup.setBackground(new Color(255, 255, 255));
 
@@ -519,25 +517,25 @@ public class HomeUI extends JFrame {
         for (User user : users) {
             int idUser = user.getCodUser();
             String nome = user.getNome();
-            String sobrenome = user.getSobrenome();
+
             String email = user.getEmail();
-            char sexo = user.getSexo();
+
             String nacionalidade = user.getNacionalidade();
 
             JLabel imgUser = new JLabel(new ImageIcon("./src/main/resources/img/imguser.png"));    //LOGOS DO SISTEMA
 
             JPanel divRGCellPerfil = new JPanel();
-            divRGCellPerfil.setLayout(new FlowLayout(FlowLayout.LEFT,10,0));
+            divRGCellPerfil.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 0));
             divRGCellPerfil.setPreferredSize(new Dimension(390, 70));
             divRGCellPerfil.setBackground(new Color(240, 244, 253));
 
             JPanel divRGCellBtns = new JPanel();
-            divRGCellBtns.setLayout(new FlowLayout(FlowLayout.RIGHT,10,10));
+            divRGCellBtns.setLayout(new FlowLayout(FlowLayout.RIGHT, 10, 10));
             divRGCellBtns.setPreferredSize(new Dimension(390, 70));
             divRGCellBtns.setBackground(new Color(240, 244, 253));
 
             JPanel divRGCell = new JPanel();
-            divRGCell.setLayout(new FlowLayout(FlowLayout.CENTER,10,10));
+            divRGCell.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
             divRGCell.setPreferredSize(new Dimension(800, 75));
             divRGCell.setBackground(new Color(240, 244, 253));
 
@@ -555,18 +553,19 @@ public class HomeUI extends JFrame {
         refreshUI();
 
 
-
-
     }
+
     private void logoutButton(Auth auth) {
         Auth.close();
         LoginUI loginUI = new LoginUI();
         dispose();
     }
+
     private void removeContent() {
         divContent.removeAll();
         divRepeatingGroup.removeAll();
     }
+
     private void refreshUI() {
         divContent.revalidate();
         divContent.repaint();
