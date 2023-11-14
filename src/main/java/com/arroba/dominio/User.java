@@ -1,15 +1,19 @@
 package com.arroba.dominio;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
-
+@Entity
 public class User {
-
+@Id
     private Integer codUser;
     private String nome;
     private String email;
-    private String senha;
+    private char[] senha;
     private String telefone;
     private String nascimento;
     private String nacionalidade;
@@ -19,7 +23,7 @@ public class User {
     public User() {
     }
 
-    public User(String nome, String email, String senha, String telefone, String nascimento, String nacionalidade) {
+    public User(String nome, String email, char[] senha, String telefone, String nascimento, String nacionalidade) {
 
         this.codUser = codUser;
         this.nome = nome;
@@ -56,12 +60,12 @@ public class User {
         this.email = email;
     }
 
-    public String getSenha() {
+    public char[] getSenha() {
         return senha;
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setSenha(char[] senha) {
+        this.senha =  senha;
     }
 
     public String getTelefone() {

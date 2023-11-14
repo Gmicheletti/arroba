@@ -21,26 +21,34 @@ public class CreateAccount {
             conn = DriverManager.getConnection(url, user, password);
 
             // Preparar a declaração SQL com um PreparedStatement
-            String sql = "INSERT INTO User (codUser, nome, sobrenome, email, senha, telefone, sexo, nascimento, nacionalidade) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO User (codUser, nome, email, senha, telefone, nascimento, nacionalidade) VALUES (?, ?, ?, ?, ?, ?, ?)";
             statement = conn.prepareStatement(sql);
 
             //Lista todos os usuários, pega o último e o codigo do ultimo e soma mais um para a criacao do proximo
             ListAllUsers listUser = new ListAllUsers(auth);
             List<User> users = listUser.getUsers();
-            User lastUser = users.get(users.size()-1);
-            Integer lastNumber = lastUser.getCodUser();
-            Integer codUser = lastNumber + 1;
+
+            int codUser;
+
+            if(users.size() > 0){
+                User lastUser = users.get(users.size()-1);
+                Integer lastNumber = lastUser.getCodUser();
+                codUser = lastNumber + 1;
+            }else{
+                codUser = 1;
+            }
+
+
 
             // Definir os parâmetros
+
             statement.setInt(1, codUser);
             statement.setString(2, nome);
-            statement.setString(3, sobrenome);
-            statement.setString(4, email);
-            statement.setString(5, new String(senha));
-            statement.setString(6, telefone);
-            statement.setString(7, sexo);
-            statement.setString(8, nascimento);
-            statement.setString(9, nacionalidade);
+            statement.setString(3, email);
+            statement.setString(4, new String(senha));
+            statement.setString(5, telefone);
+            statement.setString(6, nascimento);
+            statement.setString(7, nacionalidade);
 
             // Executar a inserção
             statement.executeUpdate();

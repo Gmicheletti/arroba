@@ -156,9 +156,7 @@ public class HomeUI extends JFrame {
         for (User user : users) {
             int idUser = user.getCodUser();
             String nome = user.getNome();
-            String sobrenome = user.getSobrenome();
             String email = user.getEmail();
-            char sexo = user.getSexo();
             String nacionalidade = user.getNacionalidade();
 
             JLabel imgUser = new JLabel(new ImageIcon("./src/main/resources/img/imguser.png"));    //LOGOS DO SISTEMA
@@ -226,9 +224,7 @@ public class HomeUI extends JFrame {
         for (User user : users) {
             int idUser = user.getCodUser();
             String nome = user.getNome();
-            String sobrenome = user.getSobrenome();
             String email = user.getEmail();
-            char sexo = user.getSexo();
             String nacionalidade = user.getNacionalidade();
 
             if(idUser == 1){
@@ -251,7 +247,7 @@ public class HomeUI extends JFrame {
                 divRGCell.setBackground(new Color(240, 244, 253));
 
                 JLabel jLabelNameUser = new JLabel(nome); //MENSAGEM
-                JLabel jLabelDescMsg = new JLabel(sobrenome); //MENSAGEM
+                JLabel jLabelDescMsg = new JLabel(nome); //MENSAGEM
                 jLabelNameUser.setHorizontalAlignment(SwingConstants.RIGHT);
                 jLabelDescMsg.setHorizontalAlignment(SwingConstants.RIGHT);
 
@@ -282,7 +278,7 @@ public class HomeUI extends JFrame {
                 divRGCell.setBackground(new Color(240, 244, 253));
 
                 JLabel jLabelNameUser = new JLabel(nome); //MENSAGEM
-                JLabel jLabelDescMsg = new JLabel(sobrenome); //MENSAGEM
+                JLabel jLabelDescMsg = new JLabel(nome); //MENSAGEM
 
 
 
@@ -420,9 +416,7 @@ public class HomeUI extends JFrame {
         for (User user : users) {
             int idUser = user.getCodUser();
             String nome = user.getNome();
-            String sobrenome = user.getSobrenome();
             String email = user.getEmail();
-            char sexo = user.getSexo();
             String nacionalidade = user.getNacionalidade();
 
 
@@ -443,7 +437,7 @@ public class HomeUI extends JFrame {
             divRGCell.setPreferredSize(new Dimension(800, 75));
             divRGCell.setBackground(new Color(240, 244, 253));
 
-            JLabel jLabelNameUser = new JLabel(nome + " " + sobrenome); //MENSAGEM
+            JLabel jLabelNameUser = new JLabel(nome + " " + nome); //MENSAGEM
             JButton removeButton = new JButton(String.valueOf("Remover"));
             JButton chatUserButton = new JButton(String.valueOf("Chat"));
 
@@ -519,9 +513,7 @@ public class HomeUI extends JFrame {
         for (User user : users) {
             int idUser = user.getCodUser();
             String nome = user.getNome();
-            String sobrenome = user.getSobrenome();
             String email = user.getEmail();
-            char sexo = user.getSexo();
             String nacionalidade = user.getNacionalidade();
 
             JLabel imgUser = new JLabel(new ImageIcon("./src/main/resources/img/imguser.png"));    //LOGOS DO SISTEMA

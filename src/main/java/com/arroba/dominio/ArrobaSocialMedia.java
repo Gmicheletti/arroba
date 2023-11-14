@@ -77,7 +77,7 @@ public class ArrobaSocialMedia {
         String emailRegister = scn.nextLine();
 
         System.out.print("Senha: ");
-        String senhaRegister = scn.nextLine();
+        char[] senhaRegister = scn.next().toCharArray();
 
         System.out.print("Telefone: ");
         String telefoneRegister = scn.nextLine();

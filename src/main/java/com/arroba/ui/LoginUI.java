@@ -24,6 +24,9 @@ public class LoginUI extends JFrame {
     private JButton loginCreateAccount = new JButton("Criar conta");
 
     JLabel logoArroba = new JLabel(new ImageIcon("./src/main/resources/img/logowhite.png"));    //LOGOS DO SISTEMA
+    ImageIcon logoErrorLogin = new ImageIcon("./src/main/resources/img/erro.gif");    //LOGOS DO SISTEMA
+
+
 
 
     public static void main(String[] args) {
@@ -77,6 +80,9 @@ public class LoginUI extends JFrame {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setVisible(true);
 
+        //DEFINE PARAMETROS DE LAYOUT DO SHOW MENSAGEM DIALOG
+        UIManager.put("OptionPane.background", new Color(255, 255, 255));
+        UIManager.getLookAndFeelDefaults().put("Panel.background", new Color(255, 255, 255));
 
         loginButton.addActionListener(new ActionListener() {
             @Override
@@ -89,7 +95,14 @@ public class LoginUI extends JFrame {
 
                 Arroba2 arroba = new Arroba2();
 
-                arroba.checkUser(email, senha, auth);
+                boolean login = arroba.checkUser(email, senha, auth);
+
+                if(login == true){
+                    dispose();
+                }else{
+                    JOptionPane.showMessageDialog(null,"Usuário ou senha inválido","Ops...", JOptionPane.INFORMATION_MESSAGE, logoErrorLogin);
+                }
+
 
             }
         });
