@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class CreateAccount {
-    public static void registerUser(String email, String nacionalidade, String nome, char[] senha, String sexo, String sobrenome, String telefone, String nascimento, Auth auth){
+    public static void registerUser(String email, String nacionalidade, String nome, char[] senha, String sexo, String sobrenome, String telefone, String nascimento, AuthBD auth){
 
         //Começa com a conexão nula com o banco
         Connection conn = null;

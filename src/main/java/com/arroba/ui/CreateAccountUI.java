@@ -1,14 +1,12 @@
 package com.arroba.ui;
 
-import com.arroba.dominio.Auth;
+import com.arroba.dominio.AuthBD;
 import com.arroba.dominio.CreateAccount;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
-import java.util.logging.Logger;
 
 
 public class CreateAccountUI extends JFrame {
@@ -112,7 +110,7 @@ public class CreateAccountUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                Auth auth = new Auth();
+                AuthBD auth = new AuthBD();
 
                 String nome = loginUserName.getText();
                 String sobrenome = loginUserName.getText();

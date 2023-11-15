@@ -1,7 +1,7 @@
 package com.arroba.ui;
 
-import com.arroba.dominio.Arroba2;
-import com.arroba.dominio.Auth;
+import com.arroba.dominio.AuthUser;
+import com.arroba.dominio.AuthBD;
 
 import javax.swing.*;
 import java.awt.*;
@@ -91,9 +91,9 @@ public class LoginUI extends JFrame {
                 String email = loginUserEmail.getText();
                 char[] senha = loginPassword.getPassword();
 
-                Auth auth = new Auth();
+                AuthBD auth = new AuthBD();
 
-                Arroba2 arroba = new Arroba2();
+                AuthUser arroba = new AuthUser();
 
                 boolean login = arroba.checkUser(email, senha, auth);
 
@@ -114,7 +114,7 @@ public class LoginUI extends JFrame {
         });
     }
 
-    private void index(Auth auth) {
+    private void index(AuthBD auth) {
         HomeUI homeUI = new HomeUI(auth);
         dispose();
     }
