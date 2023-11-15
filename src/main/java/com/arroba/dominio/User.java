@@ -14,6 +14,8 @@ public class User {
     private String nascimento;
     private String nacionalidade;
     private LinkedList<User> amizade = new LinkedList<>();
+    private LinkedList<Message> chatMensagem = new LinkedList<>();
+
 
 
     public User() {
@@ -21,14 +23,13 @@ public class User {
 
     public User(String nome, String email, String senha, String telefone, String nascimento, String nacionalidade) {
 
-        this.codUser = codUser;
+//        this.codUser = codUser;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
         this.telefone = telefone;
         this.nascimento = nascimento;
         this.nacionalidade = nacionalidade;
-//        this.amigo = new LinkedList<>();
     }
 
     public Integer getCodUser() {
@@ -93,9 +94,6 @@ public class User {
         return amizade;
     }
 
-    public void setAmigo(LinkedList<User> amizade) {
-        this.amizade = amizade;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -110,6 +108,7 @@ public class User {
         return Objects.hash(email, senha);
     }
 
+
     @Override
     public String toString() {
         return "User{" +
@@ -117,18 +116,26 @@ public class User {
                 ", nome='" + nome + '\'' +
                 ", email='" + email + '\'' +
                 ", senha='" + senha + '\'' +
-                ", telefone=" + telefone +
+                ", telefone='" + telefone + '\'' +
                 ", nascimento='" + nascimento + '\'' +
                 ", nacionalidade='" + nacionalidade + '\'' +
-//                ", amigo=" + amigo +
                 '}';
     }
 
     public void addFriend(User amigo) {
         amizade.add(amigo);
+        amigo.getAmigo().add(this); // Adiciona o usuário atual à lista de amigos do amigo
     }
 
     public void removeAmigo(User amigo) {
-        amigo.removeAmigo(amigo);
+        amizade.remove(amigo);
+        amigo.getAmigo().remove(this); // Remove o usuário atual à lista de amigos do amigo
+    }
+
+    public void addMessage(Message mensagem) {
+        chatMensagem.add(mensagem);
+    }
+    public List<Message> historicoMensagem(){
+        return chatMensagem;
     }
 }
