@@ -1,10 +1,9 @@
 package com.arroba.dominio;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 
-import java.util.Arrays;
-import java.util.LinkedList;
+import jakarta.persistence.*;
+
+
 import java.util.List;
 import java.util.Objects;
 @Entity
@@ -13,26 +12,20 @@ public class User {
     private Integer codUser;
     private String nome;
     private String email;
-    private char[] senha;
-    private String telefone;
-    private String nascimento;
-    private String nacionalidade;
-    private LinkedList<User> amizade = new LinkedList<>();
-
+    private String senha;
+    @OneToMany
+    private List<User> listFriends;
 
     public User() {
     }
 
-    public User(String nome, String email, char[] senha, String telefone, String nascimento, String nacionalidade) {
+    public User(String nome, String email, String senha) {
 
         this.codUser = codUser;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
-        this.telefone = telefone;
-        this.nascimento = nascimento;
-        this.nacionalidade = nacionalidade;
-//        this.amigo = new LinkedList<>();
+
     }
 
     public Integer getCodUser() {
@@ -51,7 +44,6 @@ public class User {
         this.nome = nome;
     }
 
-
     public String getEmail() {
         return email;
     }
@@ -60,45 +52,12 @@ public class User {
         this.email = email;
     }
 
-    public char[] getSenha() {
+    public String getSenha() {
         return senha;
     }
 
-    public void setSenha(char[] senha) {
-        this.senha =  senha;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-
-
-    public String getNascimento() {
-        return nascimento;
-    }
-
-    public void setNascimento(String nascimento) {
-        this.nascimento = nascimento;
-    }
-
-    public String getNacionalidade() {
-        return nacionalidade;
-    }
-
-    public void setNacionalidade(String nacionalidade) {
-        this.nacionalidade = nacionalidade;
-    }
-
-    public List<User> getAmigo() {
-        return amizade;
-    }
-
-    public void setAmigo(LinkedList<User> amizade) {
-        this.amizade = amizade;
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     @Override
@@ -114,6 +73,7 @@ public class User {
         return Objects.hash(email, senha);
     }
 
+
     @Override
     public String toString() {
         return "User{" +
@@ -121,18 +81,8 @@ public class User {
                 ", nome='" + nome + '\'' +
                 ", email='" + email + '\'' +
                 ", senha='" + senha + '\'' +
-                ", telefone=" + telefone +
-                ", nascimento='" + nascimento + '\'' +
-                ", nacionalidade='" + nacionalidade + '\'' +
-//                ", amigo=" + amigo +
                 '}';
     }
 
-    public void addFriend(User amigo) {
-        amizade.add(amigo);
-    }
 
-    public void removeAmigo(User amigo) {
-        amigo.removeAmigo(amigo);
-    }
 }

@@ -1,7 +1,7 @@
 package com.arroba.ui;
 
-import com.arroba.dominio.AuthBD;
-import com.arroba.dominio.CreateAccount;
+import com.arroba.dominio.AuthDB;
+import com.arroba.dominio.AccountCreate;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,14 +16,11 @@ public class CreateAccountUI extends JFrame {
     private JPanel sectionCreateAccount = new JPanel();
     private JPanel divCredential = new JPanel();
     private JPanel divName = new JPanel();
-    private JPanel divDate = new JPanel();
     private JPanel divEmail = new JPanel();
     private JPanel divPassword = new JPanel();
     private JPanel divBtns = new JPanel();
     private JLabel loginPlaceHolderName= new JLabel("Nome:");
     private JTextField loginUserName = new JTextField();
-    private JLabel loginPlaceHolderDate= new JLabel("Data Nascimento:");
-    private JTextField loginUserDate = new JTextField();
     private JLabel loginPlaceHolderEmail= new JLabel("Email:");
     private JTextField loginUserEmail = new JTextField();
     private JLabel loginPlaceHolderPassword = new JLabel("Senha:");
@@ -47,11 +44,6 @@ public class CreateAccountUI extends JFrame {
         divName.add(loginUserName);
         loginUserName.setColumns(20);
 
-        divDate.setBackground(color);
-        divDate.add(loginPlaceHolderDate).setForeground(Color.white);
-        divDate.add(loginUserDate);
-        loginUserDate.setColumns(14);
-
         divEmail.setBackground(color);
         divEmail.add(loginPlaceHolderEmail).setForeground(Color.white);
         divEmail.add(loginUserEmail);
@@ -65,7 +57,6 @@ public class CreateAccountUI extends JFrame {
         divCredential.setLayout(new GridLayout(4, 1));
         divCredential.setBackground(color);
         divCredential.add(divName);
-        divCredential.add(divDate);
         divCredential.add(divEmail);
         divCredential.add(divPassword);
 
@@ -110,20 +101,17 @@ public class CreateAccountUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                AuthBD auth = new AuthBD();
+                AuthDB auth = new AuthDB();
 
                 String nome = loginUserName.getText();
-                String sobrenome = loginUserName.getText();
-                String nascimento = loginUserDate.getText();
+
                 String email = loginUserEmail.getText();
                 char[] senha = loginPassword.getPassword();
                 String telefone = "0";
-                String sexo = "";
-                String nacionalidade = "";
 
-                CreateAccount createAccount = new CreateAccount();
+                AccountCreate createAccount = new AccountCreate();
 
-                createAccount.registerUser(email, nacionalidade,nome,senha,sexo,sobrenome,telefone,nascimento, auth);
+                createAccount.registerUser(email,nome,senha,telefone, auth);
 
                 LoginUI loginUI = new LoginUI();
                 dispose();

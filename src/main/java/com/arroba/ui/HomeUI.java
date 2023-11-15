@@ -1,8 +1,6 @@
 package com.arroba.ui;
 
-import com.arroba.dominio.AuthBD;
-import com.arroba.dominio.ListAllUsers;
-import com.arroba.dominio.User;
+import com.arroba.dominio.*;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -31,11 +29,11 @@ public class HomeUI extends JFrame {
     JLabel logoArroba = new JLabel(new ImageIcon("./src/main/resources/img/arrobaiconwhite.png"));    //LOGOS DO SISTEMA
 
 
-    public static void main(String[] args, AuthBD auth) {
-        new HomeUI(auth);
+    public static void main(String[] args, AuthDB auth, User currentUser) {
+        new HomeUI(auth, currentUser);
     }
 
-    public HomeUI(AuthBD auth){
+    public HomeUI(AuthDB auth, User currentUser){
 
         chatButton(auth);//INICIA A PAGINA COM O SECTION HOME VISIVEL
         menu();//METODO RESPONSAVEL POR CONSTRUIR O MENU
@@ -43,7 +41,7 @@ public class HomeUI extends JFrame {
         Font fonte = jLabelPageHome.getFont();
         Font fonteMaior = new Font(fonte.getName(), fonte.getStyle(), 24);
         jLabelPageHome.setFont(fonteMaior);
-
+        jLabelTitulo.setText("Bem-vindo, " + currentUser.getNome());
         divContent.setBackground(new Color(255, 255, 255));
         sectionHome.add(divMenu, BorderLayout.WEST);
         sectionHome.add(divContent, BorderLayout.CENTER);
@@ -70,7 +68,7 @@ public class HomeUI extends JFrame {
         perfilButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                perfilButton(auth);
+                perfilButton(auth, currentUser);
             }
 
         });
@@ -133,7 +131,7 @@ public class HomeUI extends JFrame {
 
 
     }
-    private void chatButton(AuthBD auth) {
+    private void chatButton(AuthDB auth) {
         removeContent();
 
         jLabelPageHome.setText("Chat");
@@ -148,7 +146,7 @@ public class HomeUI extends JFrame {
         divRepeatingGroup.setBackground(new Color(255, 255, 255));
 
         //DISPLAY LIST
-        ListAllUsers listUser = new ListAllUsers(auth);
+        ListUsers listUser = new ListUsers(auth);
         List<User> users = listUser.getUsers();
 
         //DISPLAY LIST
@@ -157,7 +155,6 @@ public class HomeUI extends JFrame {
             int idUser = user.getCodUser();
             String nome = user.getNome();
             String email = user.getEmail();
-            String nacionalidade = user.getNacionalidade();
 
             JLabel imgUser = new JLabel(new ImageIcon("./src/main/resources/img/imguser.png"));    //LOGOS DO SISTEMA
 
@@ -198,7 +195,7 @@ public class HomeUI extends JFrame {
 
         refreshUI();
     }
-    private void chatInButton(AuthBD auth) {
+    private void chatInButton(AuthDB auth) {
         removeContent();
 
         jLabelPageHome.setText("Chat");
@@ -216,7 +213,7 @@ public class HomeUI extends JFrame {
 
 
 
-        ListAllUsers listUser = new ListAllUsers(auth);
+        ListUsers listUser = new ListUsers(auth);
         List<User> users = listUser.getUsers();
 
         //DISPLAY LIST
@@ -225,7 +222,6 @@ public class HomeUI extends JFrame {
             int idUser = user.getCodUser();
             String nome = user.getNome();
             String email = user.getEmail();
-            String nacionalidade = user.getNacionalidade();
 
             if(idUser == 1){
 
@@ -310,7 +306,7 @@ public class HomeUI extends JFrame {
         refreshUI();
 
     }
-    private void perfilButton(AuthBD auth) {
+    private void perfilButton(AuthDB auth, User currentUser) {
 
         removeContent();
 
@@ -319,19 +315,16 @@ public class HomeUI extends JFrame {
          JPanel sectionCreateAccount = new JPanel();
          JPanel divCredential = new JPanel();
          JPanel divName = new JPanel();
-         JPanel divDate = new JPanel();
          JPanel divEmail = new JPanel();
          JPanel divPassword = new JPanel();
          JPanel divBtns = new JPanel();
          JLabel loginPlaceHolderName= new JLabel("Nome:");
-         JTextField loginUserName = new JTextField();
-         JLabel loginPlaceHolderDate= new JLabel("Data Nascimento:");
-         JTextField loginUserDate = new JTextField();
+         JTextField loginUserName = new JTextField(currentUser.getNome());
          JLabel loginPlaceHolderEmail= new JLabel("Email:");
-         JTextField loginUserEmail = new JTextField();
+         JTextField loginUserEmail = new JTextField(currentUser.getEmail());
          JLabel loginPlaceHolderPassword = new JLabel("Senha:");
-         JPasswordField loginPassword = new JPasswordField();
-         JButton createButton = new JButton("Salvar Alterações");
+         JPasswordField loginPassword = new JPasswordField(currentUser.getSenha());
+         JButton updateButton = new JButton("Salvar Alterações");
 
 
         JLabel logoAccount = new JLabel(new ImageIcon("./src/main/resources/img/arrobaicon.png"));    //LOGOS DO SISTEMA
@@ -342,11 +335,6 @@ public class HomeUI extends JFrame {
         divName.add(loginPlaceHolderName);
         divName.add(loginUserName);
         loginUserName.setColumns(20);
-
-        divDate.setBackground(color);
-        divDate.add(loginPlaceHolderDate);
-        divDate.add(loginUserDate);
-        loginUserDate.setColumns(14);
 
         divEmail.setBackground(color);
         divEmail.add(loginPlaceHolderEmail);
@@ -361,7 +349,6 @@ public class HomeUI extends JFrame {
         divCredential.setLayout(new GridLayout(4, 1));
         divCredential.setBackground(color);
         divCredential.add(divName);
-        divCredential.add(divDate);
         divCredential.add(divEmail);
         divCredential.add(divPassword);
 
@@ -369,7 +356,7 @@ public class HomeUI extends JFrame {
         layout.setVgap(20);
         divBtns.setLayout(layout);
         divBtns.setBackground(color);
-        divBtns.add(createButton).setPreferredSize(new Dimension(150, 35));
+        divBtns.add(updateButton).setPreferredSize(new Dimension(150, 35));
 
         sectionCreateAccount.setLayout(new GridLayout(3, 3, 20, 25));
         sectionCreateAccount.setBackground(color);
@@ -381,17 +368,19 @@ public class HomeUI extends JFrame {
         divContent.add(sectionCreateAccount);
 
 
-        createButton.addActionListener(new ActionListener() {
+        updateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                chatButton(auth);
+                AccountUpdate updateAccount = new AccountUpdate();
+                updateAccount.updateUser(loginUserName.getText(),loginUserEmail.getText(),loginPassword.getPassword(), currentUser, auth);
+
             }
         });
 
         refreshUI();
 
     }
-    private void listUsereButton(AuthBD auth) {
+    private void listUsereButton(AuthDB auth) {
         removeContent();
 
         jLabelPageHome.setText("Meus Amigos");
@@ -408,7 +397,7 @@ public class HomeUI extends JFrame {
 
 
 
-        ListAllUsers listUser = new ListAllUsers(auth);
+        ListUsers listUser = new ListUsers(auth);
         List<User> users = listUser.getUsers();
 
         //DISPLAY LIST
@@ -417,8 +406,6 @@ public class HomeUI extends JFrame {
             int idUser = user.getCodUser();
             String nome = user.getNome();
             String email = user.getEmail();
-            String nacionalidade = user.getNacionalidade();
-
 
             JLabel imgUser = new JLabel(new ImageIcon("./src/main/resources/img/imguser.png"));    //LOGOS DO SISTEMA
 
@@ -476,7 +463,7 @@ public class HomeUI extends JFrame {
 
 
     }
-    private void findUsereButton(AuthBD auth) {
+    private void findUsereButton(AuthDB auth) {
         removeContent();
 
         jLabelPageHome.setText("Buscar Usuários: ");
@@ -505,7 +492,7 @@ public class HomeUI extends JFrame {
         divRepeatingGroup.setBackground(new Color(255, 255, 255));
 
         //DISPLAY LIST
-        ListAllUsers listUser = new ListAllUsers(auth);
+        ListUsers listUser = new ListUsers(auth);
         List<User> users = listUser.getUsers();
 
         //DISPLAY LIST
@@ -514,7 +501,6 @@ public class HomeUI extends JFrame {
             int idUser = user.getCodUser();
             String nome = user.getNome();
             String email = user.getEmail();
-            String nacionalidade = user.getNacionalidade();
 
             JLabel imgUser = new JLabel(new ImageIcon("./src/main/resources/img/imguser.png"));    //LOGOS DO SISTEMA
 
@@ -550,9 +536,11 @@ public class HomeUI extends JFrame {
 
 
     }
-    private void logoutButton(AuthBD auth) {
+    private void logoutButton(AuthDB auth) {
 
         LoginUI loginUI = new LoginUI();
+        AuthUser authUser = new AuthUser();
+//        authUser.setCurrentUser(null);
         dispose();
     }
     private void removeContent() {

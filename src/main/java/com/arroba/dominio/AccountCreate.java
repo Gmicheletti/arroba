@@ -6,8 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
-public class CreateAccount {
-    public static void registerUser(String email, String nacionalidade, String nome, char[] senha, String sexo, String sobrenome, String telefone, String nascimento, AuthBD auth){
+public class AccountCreate {
+    public static void registerUser(String email, String nome, char[] senha, String telefone, AuthDB auth){
 
         //Começa com a conexão nula com o banco
         Connection conn = null;
@@ -21,11 +21,11 @@ public class CreateAccount {
             conn = DriverManager.getConnection(url, user, password);
 
             // Preparar a declaração SQL com um PreparedStatement
-            String sql = "INSERT INTO User (codUser, nome, email, senha, telefone, nascimento, nacionalidade) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO User (codUser, nome, email, senha) VALUES (?, ?, ?, ?)";
             statement = conn.prepareStatement(sql);
 
             //Lista todos os usuários, pega o último e o codigo do ultimo e soma mais um para a criacao do proximo
-            ListAllUsers listUser = new ListAllUsers(auth);
+            ListUsers listUser = new ListUsers(auth);
             List<User> users = listUser.getUsers();
 
             int codUser;
@@ -38,17 +38,12 @@ public class CreateAccount {
                 codUser = 1;
             }
 
-
-
             // Definir os parâmetros
 
             statement.setInt(1, codUser);
             statement.setString(2, nome);
             statement.setString(3, email);
             statement.setString(4, new String(senha));
-            statement.setString(5, telefone);
-            statement.setString(6, nascimento);
-            statement.setString(7, nacionalidade);
 
             // Executar a inserção
             statement.executeUpdate();
