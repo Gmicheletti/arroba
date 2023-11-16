@@ -17,7 +17,22 @@ public class ListUsers {
 
         EntityManager entityManager = auth.entityManagerFactory.createEntityManager();
         this.users = entityManager.createQuery("SELECT u FROM User u", User.class).getResultList();
+        entityManager.close();
     }
+
+
+    public ListUsers(AuthDB auth, User currentUser) {
+        EntityManager entityManager = auth.entityManagerFactory.createEntityManager();
+
+        String jpql = "SELECT u FROM User u WHERE u <> :currentUser";
+
+        this.users = entityManager.createQuery(jpql, User.class).setParameter("currentUser", currentUser).getResultList();
+
+        entityManager.close();
+    }
+
+
+
 
 
 

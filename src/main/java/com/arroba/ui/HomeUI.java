@@ -87,7 +87,7 @@ public class HomeUI extends JFrame {
         findUsereButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                findUsereButton(auth);
+                findUsereButton(auth, currentUser);
             }
         });
         logoutButton.addActionListener(new ActionListener() {
@@ -373,6 +373,7 @@ public class HomeUI extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 AccountUpdate updateAccount = new AccountUpdate();
                 updateAccount.updateUser(loginUserName.getText(),loginUserEmail.getText(),loginPassword.getPassword(), currentUser, auth);
+                dispose();
 
             }
         });
@@ -463,7 +464,7 @@ public class HomeUI extends JFrame {
 
 
     }
-    private void findUsereButton(AuthDB auth) {
+    private void findUsereButton(AuthDB auth, User currentUser) {
         removeContent();
 
         jLabelPageHome.setText("Buscar Usuários: ");
@@ -492,7 +493,7 @@ public class HomeUI extends JFrame {
         divRepeatingGroup.setBackground(new Color(255, 255, 255));
 
         //DISPLAY LIST
-        ListUsers listUser = new ListUsers(auth);
+        ListUsers listUser = new ListUsers(auth, currentUser);
         List<User> users = listUser.getUsers();
 
         //DISPLAY LIST

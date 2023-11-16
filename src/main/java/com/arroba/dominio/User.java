@@ -2,10 +2,10 @@ package com.arroba.dominio;
 
 
 import jakarta.persistence.*;
-
-
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
+
 @Entity
 public class User {
 @Id
@@ -13,8 +13,10 @@ public class User {
     private String nome;
     private String email;
     private String senha;
+    @ManyToMany
+    private List<User> amizade;
     @OneToMany
-    private List<User> listFriends;
+    private List<Chat> chat;
 
     public User() {
     }
