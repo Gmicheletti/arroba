@@ -1,34 +1,53 @@
 package com.arroba.dominio;
 
-
 import jakarta.persistence.*;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
+
+
 
 @Entity
+@Table(name = "@_user")
 public class User {
-@Id
+    @Id
+    @Column(name = "codUser", unique = true)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer codUser;
     private String nome;
     private String email;
     private String senha;
-    @ManyToMany
-    private List<User> amizade;
+
     @OneToMany
+    @JoinColumn(name = "codAmigos")
+    private List<User> amizade;
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "codChats")
     private List<Chat> chat;
 
     public User() {
+
     }
 
-    public User(String nome, String email, String senha) {
+    public User(Integer codUser, String nome, String email, char[] senha) {
+    }
 
+    public User(Integer codUser, String nome, String email, String senha) {
         this.codUser = codUser;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
-
     }
+
+    public User(Integer codUser, String nome, String email, String senha, List<User> amizade, List<Chat> chat) {
+        this.codUser = codUser;
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+        this.amizade = amizade;
+        this.chat = chat;
+    }
+
+
 
     public Integer getCodUser() {
         return codUser;
@@ -42,7 +61,7 @@ public class User {
         return nome;
     }
 
-    public void setNome(String s) {
+    public void setNome(String nome) {
         this.nome = nome;
     }
 
@@ -60,6 +79,22 @@ public class User {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public List<User> getAmizade() {
+        return amizade;
+    }
+
+    public void setAmizade(List<User> amizade) {
+        this.amizade = amizade;
+    }
+
+    public List<Chat> getChat() {
+        return chat;
+    }
+
+    public void setChat(List<Chat> chat) {
+        this.chat = chat;
     }
 
     @Override
@@ -82,9 +117,8 @@ public class User {
                 "codUser=" + codUser +
                 ", nome='" + nome + '\'' +
                 ", email='" + email + '\'' +
-                ", senha='" + senha + '\'' +
+                ", amizade=" + amizade +
+                ", chat=" + chat +
                 '}';
     }
-
-
 }

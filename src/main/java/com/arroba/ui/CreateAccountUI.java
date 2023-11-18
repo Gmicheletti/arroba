@@ -1,7 +1,6 @@
 package com.arroba.ui;
 
-import com.arroba.dominio.AuthDB;
-import com.arroba.dominio.AccountCreate;
+import com.arroba.dominio.Service;
 
 import javax.swing.*;
 import java.awt.*;
@@ -101,17 +100,14 @@ public class CreateAccountUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                AuthDB auth = new AuthDB();
 
                 String nome = loginUserName.getText();
-
                 String email = loginUserEmail.getText();
                 char[] senha = loginPassword.getPassword();
-                String telefone = "0";
 
-                AccountCreate createAccount = new AccountCreate();
 
-                createAccount.registerUser(email,nome,senha,telefone, auth);
+                Service createAccount = new Service();
+                createAccount.cadastrarUser(nome, email, senha);
 
                 LoginUI loginUI = new LoginUI();
                 dispose();

@@ -1,29 +1,46 @@
 package com.arroba.dominio;
 
-import com.arroba.ui.HomeUI;
-
-import java.util.Arrays;
-import java.util.List;
+import java.util.Objects;
 
 public class AuthUser {
+    private User currentUser;
 
-    private List<User> users;
-
-    User currentUser;
-    public boolean checkUser(String email, char[] senha, AuthDB auth) {
-
-        ListUsers listUser = new ListUsers(auth);
-        List<User> users = listUser.getUsers();
-
-        for (User user : users) {
-            if (user.getEmail().equals(email) && Arrays.equals(user.getSenha().toCharArray(), senha)) {
-                currentUser = user;
-                HomeUI homeUI = new HomeUI(auth, currentUser);
-                return true; // Encontrou um usuário correspondente
-            }
-        }
-        return false; // Não encontrou um usuário correspondente
-
+    public AuthUser() {
     }
 
+    public AuthUser(User currentUser) {
+        this.currentUser = currentUser;
+    }
+
+    public User getCurrentUser() {
+        return currentUser;
+    }
+
+    public void setCurrentUser(User currentUser) {
+        this.currentUser = currentUser;
+    }
+
+    public void removeCurrentUser(){
+         currentUser = null;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AuthUser authUser = (AuthUser) o;
+        return Objects.equals(currentUser, authUser.currentUser);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(currentUser);
+    }
+
+    @Override
+    public String toString() {
+        return "AuthUser{" +
+                "currentUser=" + currentUser +
+                '}';
+    }
 }

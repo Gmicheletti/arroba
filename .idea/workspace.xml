@@ -5,10 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5881eb6-71e7-40a8-be76-1a553aa8541b" name="Changes" comment="conexao bd hostinger">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/CreateAccount.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/Service.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/Arroba.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/Arroba2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/Auth.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/Auth.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/AccountCreate.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/AccountUpdate.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/AuthDB.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/AuthUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/AuthUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/Chat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/Chat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/ListUsers.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/arroba/ui/CreateAccountUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/arroba/ui/CreateAccountUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/arroba/ui/HomeUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/arroba/ui/HomeUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/arroba/ui/LoginUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/arroba/ui/LoginUI.java" afterDir="false" />
@@ -99,6 +105,9 @@
       <workItem from="1699492565531" duration="439000" />
       <workItem from="1699708274372" duration="1711000" />
       <workItem from="1699727715131" duration="12419000" />
+      <workItem from="1700302855778" duration="2287000" />
+      <workItem from="1700305174503" duration="569000" />
+      <workItem from="1700305754497" duration="4370000" />
     </task>
     <task id="LOCAL-00001" summary="teste">
       <option name="closed" value="true" />

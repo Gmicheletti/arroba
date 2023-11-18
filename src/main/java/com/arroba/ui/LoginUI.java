@@ -1,7 +1,6 @@
 package com.arroba.ui;
 
-import com.arroba.dominio.AuthUser;
-import com.arroba.dominio.AuthDB;
+import com.arroba.dominio.Service;
 
 import javax.swing.*;
 import java.awt.*;
@@ -30,6 +29,8 @@ public class LoginUI extends JFrame {
 
 
     public static void main(String[] args) {
+        Service service = new Service();
+        service.setUp();
         new LoginUI();
 
     }
@@ -91,17 +92,14 @@ public class LoginUI extends JFrame {
                 String email = loginUserEmail.getText();
                 char[] senha = loginPassword.getPassword();
 
-                AuthDB auth = new AuthDB();
-
-                AuthUser arroba = new AuthUser();
-
-                boolean login = arroba.checkUser(email, senha, auth);
-
-                if(login == true){
-                    dispose();
-                }else{
-                    JOptionPane.showMessageDialog(null,"Usuário ou senha inválido","Ops...", JOptionPane.INFORMATION_MESSAGE, logoErrorLogin);
-                }
+//
+//                boolean login = arroba.checkUser(email, senha);
+//
+//                if(login == true){
+//                    dispose();
+//                }else{
+//                    JOptionPane.showMessageDialog(null,"Usuário ou senha inválido","Ops...", JOptionPane.INFORMATION_MESSAGE, logoErrorLogin);
+//                }
 
 
             }
@@ -114,9 +112,7 @@ public class LoginUI extends JFrame {
         });
     }
 
-    private void index(AuthDB auth) {
-        AuthUser authUser = new AuthUser();
-        authUser.checkUser(loginUserEmail.getText(),loginPassword.getPassword(), auth);
+    private void index() {
         dispose();
     }
     private void createAccount() {
