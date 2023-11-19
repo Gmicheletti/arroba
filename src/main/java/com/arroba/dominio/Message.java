@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "@_message")
+@Table(name = "tbl_message")
 public class Message {
     @Id
     @Column(name = "codMessage", unique = true)

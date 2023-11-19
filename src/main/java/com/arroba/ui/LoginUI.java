@@ -29,8 +29,6 @@ public class LoginUI extends JFrame {
 
 
     public static void main(String[] args) {
-        Service service = new Service();
-        service.setUp();
         new LoginUI();
 
     }
@@ -72,8 +70,6 @@ public class LoginUI extends JFrame {
         body.setBackground(color);
         body.add(sectionLogin);
 
-
-
         this.setTitle("arrob@ - Login");
         this.setSize(1100,800);
         this.getContentPane().add(body);
@@ -95,14 +91,13 @@ public class LoginUI extends JFrame {
                 Service service = new Service();
                 service.setUp();
                 service.loginUser(email, senha);
-//                service.setCurrentUser(userLogado);
-//
-//                if(userLogado != null){
-//                    HomeUI homeUI = new HomeUI(service.getCurrentUser());
-//                    dispose();
-//                }else{
-//                    JOptionPane.showMessageDialog(null,"Usuário ou senha inválido","Ops...", JOptionPane.INFORMATION_MESSAGE, logoErrorLogin);
-//                }
+
+                if(service != null){
+                    HomeUI homeUI = new HomeUI(service.getCurrentUser());
+                    dispose();
+                }else{
+                    JOptionPane.showMessageDialog(null,"Usuário ou senha inválido","Ops...", JOptionPane.INFORMATION_MESSAGE, logoErrorLogin);
+                }
 
 
             }

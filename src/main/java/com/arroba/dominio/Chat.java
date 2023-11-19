@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "@_chat")
+@Table(name = "tbl_chat")
 public class Chat {
     @Id
     @Column(name = "codChat", unique = true)

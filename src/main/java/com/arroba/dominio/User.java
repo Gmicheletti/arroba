@@ -10,13 +10,14 @@ import java.util.Objects;
 
 
 @Entity
-@Table(name = "@_user")
+@Table(name = "tbl_user")
 public class User {
     @Id
     @Column(name = "codUser", unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer codUser;
     private String nome;
+
     private String email;
     private char[] senha;
     @OneToMany
@@ -26,6 +27,7 @@ public class User {
     public User() {
 
     }
+
     public User(Integer codUser, String nome, String email, char[] senha) {
         this.codUser = codUser;
         this.nome = nome;
@@ -80,10 +82,7 @@ public class User {
     public void setAmizade(List<User> amizade) {
         this.amizade = amizade;
     }
-    public boolean checkPassword(char[] password) {
-        String senhaDigitada = new String(password);
-        return senhaDigitada.equals(senha);
-    }
+
 
     @Override
     public boolean equals(Object o) {

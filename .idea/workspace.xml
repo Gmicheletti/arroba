@@ -4,13 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b5881eb6-71e7-40a8-be76-1a553aa8541b" name="Changes" comment="conexao bd hostinger">
+    <list default="true" id="b5881eb6-71e7-40a8-be76-1a553aa8541b" name="Changes" comment="create functions back/front">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/AuthUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/AuthUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/Chat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/Chat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/Message.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/Service.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/arroba/dominio/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/arroba/ui/CreateAccountUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/arroba/ui/CreateAccountUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/arroba/ui/HomeUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/arroba/ui/HomeUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/arroba/ui/LoginUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/arroba/ui/LoginUI.java" afterDir="false" />
     </list>
@@ -103,7 +103,7 @@
       <workItem from="1700302855778" duration="2287000" />
       <workItem from="1700305174503" duration="569000" />
       <workItem from="1700305754497" duration="15718000" />
-      <workItem from="1700398405475" duration="2423000" />
+      <workItem from="1700398405475" duration="13113000" />
     </task>
     <task id="LOCAL-00001" summary="teste">
       <option name="closed" value="true" />
@@ -153,7 +153,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700310518949</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="create functions back/front">
+      <option name="closed" value="true" />
+      <created>1700401401208</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1700401401209</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -175,6 +183,7 @@
     <MESSAGE value="teste" />
     <MESSAGE value="update front" />
     <MESSAGE value="conexao bd hostinger" />
-    <option name="LAST_COMMIT_MESSAGE" value="conexao bd hostinger" />
+    <MESSAGE value="create functions back/front" />
+    <option name="LAST_COMMIT_MESSAGE" value="create functions back/front" />
   </component>
 </project>
