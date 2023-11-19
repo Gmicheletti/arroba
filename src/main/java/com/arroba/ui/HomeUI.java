@@ -7,6 +7,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 
 
 public class HomeUI extends JFrame {
@@ -322,7 +323,7 @@ public class HomeUI extends JFrame {
          JLabel loginPlaceHolderEmail= new JLabel("Email:");
          JTextField loginUserEmail = new JTextField(currentUser.getEmail());
          JLabel loginPlaceHolderPassword = new JLabel("Senha:");
-         JPasswordField loginPassword = new JPasswordField(currentUser.getSenha());
+         JPasswordField loginPassword = new JPasswordField(Arrays.toString(currentUser.getSenha()));
          JButton updateButton = new JButton("Salvar Alterações");
 
 

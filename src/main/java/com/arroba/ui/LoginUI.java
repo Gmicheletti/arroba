@@ -92,10 +92,13 @@ public class LoginUI extends JFrame {
                 String email = loginUserEmail.getText();
                 char[] senha = loginPassword.getPassword();
 
+                Service service = new Service();
+                service.setUp();
+                service.loginUser(email, senha);
+//                service.setCurrentUser(userLogado);
 //
-//                boolean login = arroba.checkUser(email, senha);
-//
-//                if(login == true){
+//                if(userLogado != null){
+//                    HomeUI homeUI = new HomeUI(service.getCurrentUser());
 //                    dispose();
 //                }else{
 //                    JOptionPane.showMessageDialog(null,"Usuário ou senha inválido","Ops...", JOptionPane.INFORMATION_MESSAGE, logoErrorLogin);

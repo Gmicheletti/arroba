@@ -8,10 +8,15 @@ import java.util.Objects;
 @Table(name = "@_chat")
 public class Chat {
     @Id
+    @Column(name = "codChat", unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer codChat;
-    @OneToMany(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "codChats")
+    @OneToOne
+    private User User1;
+    @OneToOne
+    private User User2;
+    @OneToMany
+    @JoinColumn(name = "codMessage")
     private List<Message> message;
 
     public Chat() {

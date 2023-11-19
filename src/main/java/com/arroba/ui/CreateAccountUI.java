@@ -106,8 +106,9 @@ public class CreateAccountUI extends JFrame {
                 char[] senha = loginPassword.getPassword();
 
 
-                Service createAccount = new Service();
-                createAccount.cadastrarUser(nome, email, senha);
+                Service service = new Service();
+                service.setUp();
+                service.cadastrarUser(nome, email, senha);
 
                 LoginUI loginUI = new LoginUI();
                 dispose();

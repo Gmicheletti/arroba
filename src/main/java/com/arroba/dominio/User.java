@@ -1,6 +1,9 @@
 package com.arroba.dominio;
 
 import jakarta.persistence.*;
+
+
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -15,39 +18,28 @@ public class User {
     private Integer codUser;
     private String nome;
     private String email;
-    private String senha;
-
+    private char[] senha;
     @OneToMany
-    @JoinColumn(name = "codAmigos")
     private List<User> amizade;
-    @ManyToMany(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "codChats")
-    private List<Chat> chat;
+
 
     public User() {
 
     }
-
     public User(Integer codUser, String nome, String email, char[] senha) {
-    }
-
-    public User(Integer codUser, String nome, String email, String senha) {
         this.codUser = codUser;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
     }
 
-    public User(Integer codUser, String nome, String email, String senha, List<User> amizade, List<Chat> chat) {
+    public User(Integer codUser, String nome, String email, char[] senha, List<User> amizade) {
         this.codUser = codUser;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
         this.amizade = amizade;
-        this.chat = chat;
     }
-
-
 
     public Integer getCodUser() {
         return codUser;
@@ -73,11 +65,11 @@ public class User {
         this.email = email;
     }
 
-    public String getSenha() {
+    public char[] getSenha() {
         return senha;
     }
 
-    public void setSenha(String senha) {
+    public void setSenha(char[] senha) {
         this.senha = senha;
     }
 
@@ -88,13 +80,9 @@ public class User {
     public void setAmizade(List<User> amizade) {
         this.amizade = amizade;
     }
-
-    public List<Chat> getChat() {
-        return chat;
-    }
-
-    public void setChat(List<Chat> chat) {
-        this.chat = chat;
+    public boolean checkPassword(char[] password) {
+        String senhaDigitada = new String(password);
+        return senhaDigitada.equals(senha);
     }
 
     @Override
@@ -102,14 +90,15 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(email, user.email) && Objects.equals(senha, user.senha);
+        return Objects.equals(email, user.email) && Arrays.equals(senha, user.senha);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(email, senha);
+        int result = Objects.hash(email);
+        result = 31 * result + Arrays.hashCode(senha);
+        return result;
     }
-
 
     @Override
     public String toString() {
@@ -118,7 +107,6 @@ public class User {
                 ", nome='" + nome + '\'' +
                 ", email='" + email + '\'' +
                 ", amizade=" + amizade +
-                ", chat=" + chat +
                 '}';
     }
 }
