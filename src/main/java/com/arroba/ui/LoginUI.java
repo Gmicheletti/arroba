@@ -94,7 +94,7 @@ public class LoginUI extends JFrame {
 
                 service.loginUser(email, senha);
 
-                if(service != null){
+                if(service.getCurrentUser() != null){
                     HomeUI homeUI = new HomeUI(service.getCurrentUser(),  service);
                     dispose();
                 }else{
