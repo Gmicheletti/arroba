@@ -8,23 +8,26 @@ import java.util.Objects;
 @Table(name = "tbl_chat")
 public class Chat {
     @Id
-    @Column(name = "codChat", unique = true)
+    @Column(name = "codChat")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer codChat;
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "User1_codUser")
     private User User1;
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "User2_codUser")
     private User User2;
-    @OneToMany
-    @JoinColumn(name = "codMessage")
-    private List<Message> message;
+
+    @OneToMany(mappedBy = "chat")
+    private List<Message> messages;
 
     public Chat() {
     }
 
-    public Chat(Integer codChat, List<Message> message) {
+    public Chat(Integer codChat, User user1, User user2) {
         this.codChat = codChat;
-        this.message = message;
+        User1 = user1;
+        User2 = user2;
     }
 
     public Integer getCodChat() {
@@ -35,13 +38,29 @@ public class Chat {
         this.codChat = codChat;
     }
 
-    public List<Message> getMessage() {
-        return message;
+    public User getUser1() {
+        return User1;
     }
 
-    public void setMessage(List<Message> message) {
-        this.message = message;
+    public void setUser1(User user1) {
+        User1 = user1;
     }
+
+    public User getUser2() {
+        return User2;
+    }
+
+    public void setUser2(User user2) {
+        User2 = user2;
+    }
+
+//    public List<Message> getMessage() {
+//        return message;
+//    }
+//
+//    public void setMessage(List<Message> message) {
+//        this.message = message;
+//    }
 
     @Override
     public boolean equals(Object o) {
@@ -60,7 +79,7 @@ public class Chat {
     public String toString() {
         return "Chat{" +
                 "codChat=" + codChat +
-                ", message=" + message +
+//                ", message=" + message +
                 '}';
     }
 }

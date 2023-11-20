@@ -29,10 +29,14 @@ public class LoginUI extends JFrame {
 
 
     public static void main(String[] args) {
-        new LoginUI();
+
+        Service service = new Service();
+        service.setUp();
+
+        new LoginUI(service);
 
     }
-    public LoginUI(){
+    public LoginUI(Service service){
         Color color = new Color(59, 74, 178);
 
 
@@ -88,12 +92,10 @@ public class LoginUI extends JFrame {
                 String email = loginUserEmail.getText();
                 char[] senha = loginPassword.getPassword();
 
-                Service service = new Service();
-                service.setUp();
                 service.loginUser(email, senha);
 
                 if(service != null){
-                    HomeUI homeUI = new HomeUI(service.getCurrentUser());
+                    HomeUI homeUI = new HomeUI(service.getCurrentUser(),  service);
                     dispose();
                 }else{
                     JOptionPane.showMessageDialog(null,"Usuário ou senha inválido","Ops...", JOptionPane.INFORMATION_MESSAGE, logoErrorLogin);
@@ -105,7 +107,7 @@ public class LoginUI extends JFrame {
         loginCreateAccount.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                createAccount();
+                createAccount(service);
             }
         });
     }
@@ -113,8 +115,8 @@ public class LoginUI extends JFrame {
     private void index() {
         dispose();
     }
-    private void createAccount() {
-        CreateAccountUI createAccountUI = new CreateAccountUI();
+    private void createAccount(Service service) {
+        CreateAccountUI createAccountUI = new CreateAccountUI(service);
         dispose();
     }
 

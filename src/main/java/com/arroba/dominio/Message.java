@@ -7,13 +7,13 @@ import java.util.Objects;
 @Table(name = "tbl_message")
 public class Message {
     @Id
-    @Column(name = "codMessage", unique = true)
+    @Column(name = "codMessage")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer codMessage;
     @ManyToOne
     @JoinColumn(name = "codUser")
     private User remetente;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "codChat")
     private Chat chat;
     private String descMensagem;

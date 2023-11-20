@@ -32,9 +32,11 @@ public class CreateAccountUI extends JFrame {
 
 
     public static void main(String[] args) {
-        new CreateAccountUI();
+        Service service = new Service();
+        service.setUp();
+        new CreateAccountUI(service);
     }
-    public CreateAccountUI(){
+    public CreateAccountUI(Service service){
 
         Color color = new Color(59, 74, 178);
 
@@ -90,7 +92,7 @@ public class CreateAccountUI extends JFrame {
         previousButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                LoginUI loginUI = new LoginUI();
+                LoginUI loginUI = new LoginUI(service);
                 dispose();
             }
         });
@@ -106,11 +108,9 @@ public class CreateAccountUI extends JFrame {
                 char[] senha = loginPassword.getPassword();
 
 
-                Service service = new Service();
-                service.setUp();
                 service.cadastrarUser(nome, email, senha);
 
-                LoginUI loginUI = new LoginUI();
+                LoginUI loginUI = new LoginUI(service);
                 dispose();
             }
         });

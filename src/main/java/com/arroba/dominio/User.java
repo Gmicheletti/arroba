@@ -3,6 +3,7 @@ package com.arroba.dominio;
 import jakarta.persistence.*;
 
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -13,15 +14,22 @@ import java.util.Objects;
 @Table(name = "tbl_user")
 public class User {
     @Id
-    @Column(name = "codUser", unique = true)
+    @Column(name = "codUser")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer codUser;
     private String nome;
 
     private String email;
     private char[] senha;
-    @OneToMany
-    private List<User> amizade;
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(
+            name = "tbl_user_amizade",
+            joinColumns = @JoinColumn(name = "User_codUser"),
+            inverseJoinColumns = @JoinColumn(name = "Amizade_codUser")
+    )
+    private List<User> amizade = new ArrayList<>();
+
+
 
 
     public User() {
@@ -81,6 +89,15 @@ public class User {
 
     public void setAmizade(List<User> amizade) {
         this.amizade = amizade;
+    }
+    public void addAmizade(User friend){
+        amizade.add(friend);
+        friend.getAmizade().add(this);
+    }
+
+    public void removeAmizade(User friend){
+        amizade.remove(friend);
+        friend.getAmizade().remove(this);
     }
 
 

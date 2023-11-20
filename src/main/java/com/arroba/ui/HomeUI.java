@@ -7,7 +7,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Arrays;
+import java.awt.List;
 
 
 public class HomeUI extends JFrame {
@@ -23,19 +23,20 @@ public class HomeUI extends JFrame {
     private JPanel divRepeatingGroup = new JPanel();
     private JButton perfilButton = new JButton("Meu Perfil");
     private JButton listUsereButton = new JButton("Meus amigos");
-    private JButton findUsereButton = new JButton("Buscar Usuários");
+    private JButton findUsereButton = new JButton("Adicionar amigos");
     private JButton logoutButton = new JButton("Logout");
 
     JLabel logoArroba = new JLabel(new ImageIcon("./src/main/resources/img/arrobaiconwhite.png"));    //LOGOS DO SISTEMA
 
 
     public static void main(String[] args, User currentUser) {
-        new HomeUI(currentUser);
+        Service service = new Service();
+        service.setUp();
+        new HomeUI(currentUser, service);
     }
 
-    public HomeUI(User currentUser){
-
-        chatButton();//INICIA A PAGINA COM O SECTION HOME VISIVEL
+    public HomeUI(User currentUser, Service service){
+        chatButton(currentUser,service);//INICIA A PAGINA COM O SECTION HOME VISIVEL
         menu();//METODO RESPONSAVEL POR CONSTRUIR O MENU
 
         Font fonte = jLabelPageHome.getFont();
@@ -68,26 +69,26 @@ public class HomeUI extends JFrame {
         perfilButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                perfilButton(currentUser);
+                perfilButton(currentUser, service);
             }
 
         });
         chatButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                chatButton();
+                chatButton(currentUser, service);
             }
         });
         listUsereButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                listUsereButton(currentUser);
+                listUsereButton(currentUser, service);
             }
         });
         findUsereButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                findUsereButton(currentUser);
+                findUsereButton(currentUser,service);
             }
         });
         logoutButton.addActionListener(new ActionListener() {
@@ -99,7 +100,7 @@ public class HomeUI extends JFrame {
 
                 if (confirmLogout == JOptionPane.YES_OPTION) {
                     // O usuário clicou em "Sim", faça o logout
-                    logoutButton();
+                    logoutButton(service);
                 }
 
 
@@ -112,6 +113,7 @@ public class HomeUI extends JFrame {
 
     //METODOS
     private void menu() {//METODO RESPONSAVEL POR CONSTRUIR O MENU
+
 
         FlowLayout layout = new FlowLayout(FlowLayout.CENTER);
         layout.setVgap(20);
@@ -131,7 +133,7 @@ public class HomeUI extends JFrame {
 
 
     }
-    private void chatButton() {
+    private void chatButton(User currentUser, Service service) {
         removeContent();
 
         jLabelPageHome.setText("Chat");
@@ -146,59 +148,64 @@ public class HomeUI extends JFrame {
         divRepeatingGroup.setBackground(new Color(255, 255, 255));
 
         //DISPLAY LIST
-//        ListUsers listUser = new ListUsers();
-//        List<User> users = listUser.getUsers();
+        var chats = service.listChats();
 
-        //DISPLAY LIST
 
-//        for (User user : users) {
-//            int idUser = user.getCodUser();
-//            String nome = user.getNome();
-//            String email = user.getEmail();
-//
-//            JLabel imgUser = new JLabel(new ImageIcon("./src/main/resources/img/imguser.png"));    //LOGOS DO SISTEMA
-//
-//            JPanel divRGCellPerfil = new JPanel();
-//            divRGCellPerfil.setLayout(new FlowLayout(FlowLayout.LEFT,10,0));
-//            divRGCellPerfil.setPreferredSize(new Dimension(390, 70));
-//            divRGCellPerfil.setBackground(new Color(240, 244, 253));
-//
-//            JPanel divRGCellBtns = new JPanel();
-//            divRGCellBtns.setLayout(new FlowLayout(FlowLayout.RIGHT,10,10));
-//            divRGCellBtns.setPreferredSize(new Dimension(390, 70));
-//            divRGCellBtns.setBackground(new Color(240, 244, 253));
-//
-//            JPanel divRGCell = new JPanel();
-//            divRGCell.setLayout(new FlowLayout(FlowLayout.CENTER,10,10));
-//            divRGCell.setPreferredSize(new Dimension(800, 75));
-//            divRGCell.setBackground(new Color(240, 244, 253));
-//
-//            JLabel jLabelNameUser = new JLabel(nome); //MENSAGEM
-//            JButton chatUserButton = new JButton(String.valueOf("Chat"));
-//
-//            divRGCellPerfil.add(imgUser);
-//            divRGCellPerfil.add(jLabelNameUser);
-//            divRGCellBtns.add(chatUserButton);
-//            divRGCell.add(divRGCellPerfil);
-//            divRGCell.add(divRGCellBtns);
-//            divRepeatingGroup.add(divRGCell);
-//
-//            chatUserButton.addActionListener(new ActionListener() {
-//                @Override
-//                public void actionPerformed(ActionEvent e) {
-//                    chatInButton();
-//                }
-//            });
-//
-//
-//        }
+        for (Chat chat : chats) {
+            Integer codChat = chat.getCodChat();
+            User user1 = chat.getUser1();
+            User user2 = chat.getUser2();
+            String nameChat;
+
+            if(user1.getCodUser() == currentUser.getCodUser()){
+                nameChat = user2.getNome();
+            }else{
+                nameChat = user1.getNome();
+            }
+
+            JLabel imgUser = new JLabel(new ImageIcon("./src/main/resources/img/imguser.png"));    //LOGOS DO SISTEMA
+
+            JPanel divRGCellPerfil = new JPanel();
+            divRGCellPerfil.setLayout(new FlowLayout(FlowLayout.LEFT,10,0));
+            divRGCellPerfil.setPreferredSize(new Dimension(390, 70));
+            divRGCellPerfil.setBackground(new Color(240, 244, 253));
+
+            JPanel divRGCellBtns = new JPanel();
+            divRGCellBtns.setLayout(new FlowLayout(FlowLayout.RIGHT,10,10));
+            divRGCellBtns.setPreferredSize(new Dimension(390, 70));
+            divRGCellBtns.setBackground(new Color(240, 244, 253));
+
+            JPanel divRGCell = new JPanel();
+            divRGCell.setLayout(new FlowLayout(FlowLayout.CENTER,10,10));
+            divRGCell.setPreferredSize(new Dimension(800, 75));
+            divRGCell.setBackground(new Color(240, 244, 253));
+
+            JLabel jLabelNameUser = new JLabel(nameChat); //MENSAGEM
+            JButton chatUserButton = new JButton(String.valueOf("Chat"));
+
+            divRGCellPerfil.add(imgUser);
+            divRGCellPerfil.add(jLabelNameUser);
+            divRGCellBtns.add(chatUserButton);
+            divRGCell.add(divRGCellPerfil);
+            divRGCell.add(divRGCellBtns);
+            divRepeatingGroup.add(divRGCell);
+
+            chatUserButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    chatInButton(chat, service, currentUser);
+                }
+            });
+
+
+        }
 
         refreshUI();
     }
-    private void chatInButton() {
+    private void chatInButton(Chat Chat, Service service, User currentUser) {
         removeContent();
 
-        jLabelPageHome.setText("Chat");
+        jLabelPageHome.setText("Chat" + Chat);
         jLabelPageHome.setBackground(new Color(15, 173, 53));
 
         divContent.setLayout(new FlowLayout(FlowLayout.CENTER,400,20));
@@ -209,104 +216,110 @@ public class HomeUI extends JFrame {
         divRepeatingGroup.setPreferredSize(new Dimension(800, 600));
         divRepeatingGroup.setBackground(new Color(255, 255, 255));
 
-        //DISPLAY LIST
 
 
 
-//        ListUsers listUser = new ListUsers(auth);
-//        List<User> users = listUser.getUsers();
+        var chat = service.listMessageChat(Chat.getCodChat());
 
-        //DISPLAY LIST
 
-//        for (User user : users) {
-//            int idUser = user.getCodUser();
-//            String nome = user.getNome();
-//            String email = user.getEmail();
-//
-//            if(idUser == 1){
-//
-//                JLabel imgUser = new JLabel(new ImageIcon("./src/main/resources/img/imguser.png"));    //LOGOS DO SISTEMA
-//
-//                JPanel divRGCellPerfil = new JPanel();
-//                divRGCellPerfil.setLayout(new FlowLayout(FlowLayout.RIGHT,10,0));
-//                divRGCellPerfil.setPreferredSize(new Dimension(800, 70));
-//                divRGCellPerfil.setBackground(new Color(240, 244, 253));
-//
-//                JPanel divRGCellDesc = new JPanel();
-//                divRGCellDesc.setLayout(new GridLayout(2, 1, 0, 0));
-//                divRGCellDesc.setPreferredSize(new Dimension(300, 40));
-//                divRGCellDesc.setBackground(new Color(240, 244, 253));
-//
-//                JPanel divRGCell = new JPanel();
-//                divRGCell.setLayout(new FlowLayout(FlowLayout.CENTER,10,10));
-//                divRGCell.setPreferredSize(new Dimension(800, 75));
-//                divRGCell.setBackground(new Color(240, 244, 253));
-//
-//                JLabel jLabelNameUser = new JLabel(nome); //MENSAGEM
-//                JLabel jLabelDescMsg = new JLabel(nome); //MENSAGEM
-//                jLabelNameUser.setHorizontalAlignment(SwingConstants.RIGHT);
-//                jLabelDescMsg.setHorizontalAlignment(SwingConstants.RIGHT);
-//
-//
-//                divRGCellDesc.add(jLabelNameUser);
-//                divRGCellDesc.add(jLabelDescMsg);
-//                divRGCell.add(divRGCellPerfil);
-//                divRGCellPerfil.add(divRGCellDesc);
-//                divRGCellPerfil.add(imgUser);
-//                divRepeatingGroup.add(divRGCell);
-//
-//            } else{
-//                JLabel imgUser = new JLabel(new ImageIcon("./src/main/resources/img/imguser.png"));    //LOGOS DO SISTEMA
-//
-//                JPanel divRGCellPerfil = new JPanel();
-//                divRGCellPerfil.setLayout(new FlowLayout(FlowLayout.LEFT,10,0));
-//                divRGCellPerfil.setPreferredSize(new Dimension(800, 70));
-//                divRGCellPerfil.setBackground(new Color(240, 244, 253));
-//
-//                JPanel divRGCellDesc = new JPanel();
-//                divRGCellDesc.setLayout(new GridLayout(2, 1, 0, 0));
-//                divRGCellDesc.setPreferredSize(new Dimension(300, 40));
-//                divRGCellDesc.setBackground(new Color(240, 244, 253));
-//
-//                JPanel divRGCell = new JPanel();
-//                divRGCell.setLayout(new FlowLayout(FlowLayout.CENTER,10,10));
-//                divRGCell.setPreferredSize(new Dimension(800, 75));
-//                divRGCell.setBackground(new Color(240, 244, 253));
-//
-//                JLabel jLabelNameUser = new JLabel(nome); //MENSAGEM
-//                JLabel jLabelDescMsg = new JLabel(nome); //MENSAGEM
-//
-//
-//
-//                divRGCellPerfil.add(imgUser);
-//                divRGCellDesc.add(jLabelNameUser);
-//                divRGCellDesc.add(jLabelDescMsg);
-//                divRGCell.add(divRGCellPerfil);
-//                divRGCellPerfil.add(divRGCellDesc);
-//                divRepeatingGroup.add(divRGCell);
-//            }
-//
-//
-//        }
-//
-//        JPanel divsendmsg = new JPanel();
-//        divsendmsg.setLayout(new FlowLayout(FlowLayout.CENTER,20,20));
-//        divsendmsg.setBackground(new Color(255,255,255));
-//
-//        JTextField sendMsgBox = new JTextField();
-//        sendMsgBox.setColumns(60);
-//
-//        JButton searchButton = new JButton("Enviar");
-//
-//        divsendmsg.add(sendMsgBox);
-//        divsendmsg.add(searchButton);
-//
-//        divContent.add(divsendmsg);
+        for (Message message : chat) {
+            int codMessage = message.getCodMessage();
+            User remetente = message.getRemetente();
+            String desc = message.getDescMensagem();
+
+            if(remetente.getCodUser() == service.getCurrentUser().getCodUser()){
+
+                JLabel imgUser = new JLabel(new ImageIcon("./src/main/resources/img/imguser.png"));    //LOGOS DO SISTEMA
+
+                JPanel divRGCellPerfil = new JPanel();
+                divRGCellPerfil.setLayout(new FlowLayout(FlowLayout.RIGHT,10,0));
+                divRGCellPerfil.setPreferredSize(new Dimension(800, 70));
+                divRGCellPerfil.setBackground(new Color(240, 244, 253));
+
+                JPanel divRGCellDesc = new JPanel();
+                divRGCellDesc.setLayout(new GridLayout(2, 1, 0, 0));
+                divRGCellDesc.setPreferredSize(new Dimension(300, 40));
+                divRGCellDesc.setBackground(new Color(240, 244, 253));
+
+                JPanel divRGCell = new JPanel();
+                divRGCell.setLayout(new FlowLayout(FlowLayout.CENTER,10,10));
+                divRGCell.setPreferredSize(new Dimension(800, 75));
+                divRGCell.setBackground(new Color(240, 244, 253));
+
+                JLabel jLabelNameUser = new JLabel(remetente.getNome()); //MENSAGEM
+                JLabel jLabelDescMsg = new JLabel(desc); //MENSAGEM
+                jLabelNameUser.setHorizontalAlignment(SwingConstants.RIGHT);
+                jLabelDescMsg.setHorizontalAlignment(SwingConstants.RIGHT);
+
+
+                divRGCellDesc.add(jLabelNameUser);
+                divRGCellDesc.add(jLabelDescMsg);
+                divRGCell.add(divRGCellPerfil);
+                divRGCellPerfil.add(divRGCellDesc);
+                divRGCellPerfil.add(imgUser);
+                divRepeatingGroup.add(divRGCell);
+
+            } else{
+                JLabel imgUser = new JLabel(new ImageIcon("./src/main/resources/img/imguser.png"));    //LOGOS DO SISTEMA
+
+                JPanel divRGCellPerfil = new JPanel();
+                divRGCellPerfil.setLayout(new FlowLayout(FlowLayout.LEFT,10,0));
+                divRGCellPerfil.setPreferredSize(new Dimension(800, 70));
+                divRGCellPerfil.setBackground(new Color(240, 244, 253));
+
+                JPanel divRGCellDesc = new JPanel();
+                divRGCellDesc.setLayout(new GridLayout(2, 1, 0, 0));
+                divRGCellDesc.setPreferredSize(new Dimension(300, 40));
+                divRGCellDesc.setBackground(new Color(240, 244, 253));
+
+                JPanel divRGCell = new JPanel();
+                divRGCell.setLayout(new FlowLayout(FlowLayout.CENTER,10,10));
+                divRGCell.setPreferredSize(new Dimension(800, 75));
+                divRGCell.setBackground(new Color(240, 244, 253));
+
+                JLabel jLabelNameUser = new JLabel(remetente.getNome()); //MENSAGEM
+                JLabel jLabelDescMsg = new JLabel(desc); //MENSAGEM
+
+
+
+                divRGCellPerfil.add(imgUser);
+                divRGCellDesc.add(jLabelNameUser);
+                divRGCellDesc.add(jLabelDescMsg);
+                divRGCell.add(divRGCellPerfil);
+                divRGCellPerfil.add(divRGCellDesc);
+                divRepeatingGroup.add(divRGCell);
+            }
+
+
+        }
+
+        JPanel divsendmsg = new JPanel();
+        divsendmsg.setLayout(new FlowLayout(FlowLayout.CENTER,20,20));
+        divsendmsg.setBackground(new Color(255,255,255));
+
+        JTextField sendMsgBox = new JTextField();
+        sendMsgBox.setColumns(60);
+
+        JButton sendMessageBtn = new JButton("Enviar");
+
+        divsendmsg.add(sendMsgBox);
+        divsendmsg.add(sendMessageBtn);
+
+        divContent.add(divsendmsg);
+        sendMessageBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                service.sendMessage(Chat,sendMsgBox.getText(),currentUser);
+
+
+
+            }
+        });
 
         refreshUI();
 
     }
-    private void perfilButton(User currentUser) {
+    private void perfilButton(User currentUser, Service service) {
 
         removeContent();
 
@@ -371,10 +384,9 @@ public class HomeUI extends JFrame {
         updateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Service service = new Service();
-                service.setUp();
                 service.UpdateCurrentUser(loginUserName.getText(),loginUserEmail.getText(),loginPassword.getPassword(), currentUser);
                 dispose();
+                HomeUI homeUI = new HomeUI(currentUser, service);
 
             }
         });
@@ -382,7 +394,7 @@ public class HomeUI extends JFrame {
         refreshUI();
 
     }
-    private void listUsereButton(User currentUser) {
+    private void listUsereButton(User currentUser, Service service) {
         removeContent();
 
         jLabelPageHome.setText("Meus Amigos");
@@ -397,9 +409,8 @@ public class HomeUI extends JFrame {
         divRepeatingGroup.setPreferredSize(new Dimension(800, 700));
         divRepeatingGroup.setBackground(new Color(255, 255, 255));
 
-        Service service = new Service();
-        service.setUp();
-        var users = service.AllUser(currentUser);
+
+        var users = service.ListUsersFriends(currentUser);
 
         for (User user : users) {
             int idUser = user.getCodUser();
@@ -423,7 +434,7 @@ public class HomeUI extends JFrame {
             divRGCell.setPreferredSize(new Dimension(800, 75));
             divRGCell.setBackground(new Color(240, 244, 253));
 
-            JLabel jLabelNameUser = new JLabel(nome + " " + nome); //MENSAGEM
+            JLabel jLabelNameUser = new JLabel(nome); //MENSAGEM
             JButton removeButton = new JButton(String.valueOf("Remover"));
             JButton chatUserButton = new JButton(String.valueOf("Chat"));
 
@@ -443,7 +454,10 @@ public class HomeUI extends JFrame {
                     int confirmRemoveUser = JOptionPane.showConfirmDialog(HomeUI.this, "Tem certeza de que deseja remover amizade?", "Confirmação de exclusão", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 
                     if (confirmRemoveUser == JOptionPane.YES_OPTION) {
-                        // O usuário clicou em "Sim", faça o logout
+                        service.removeFriend(currentUser, user);
+                        dispose();
+                        HomeUI homeUI = new HomeUI(currentUser, service);
+                        listUsereButton(currentUser, service);
 
                     }
                 }
@@ -452,7 +466,9 @@ public class HomeUI extends JFrame {
             chatUserButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    chatInButton();
+                    Chat chatListFriend = service.openCreateChat(currentUser, user);
+                    chatInButton(chatListFriend, service, currentUser);
+
                 }
             });
         }
@@ -462,10 +478,10 @@ public class HomeUI extends JFrame {
 
 
     }
-    private void findUsereButton(User currentUser) {
+    private void findUsereButton(User currentUser, Service service) {
         removeContent();
 
-        jLabelPageHome.setText("Buscar Usuários: ");
+        jLabelPageHome.setText("Adicionar amigos");
 
         JPanel divsearchBox = new JPanel();
         divsearchBox.setLayout(new FlowLayout(FlowLayout.CENTER,20,20));
@@ -478,9 +494,9 @@ public class HomeUI extends JFrame {
         JButton resetSearchButton = new JButton("Limpar");
 
         divsearchBox.add(jLabelPageHome);
-        divsearchBox.add(searchBox);
-        divsearchBox.add(searchButton);
-        divsearchBox.add(resetSearchButton);
+//        divsearchBox.add(searchBox);
+//        divsearchBox.add(searchButton);
+//        divsearchBox.add(resetSearchButton);
 
         divContent.setLayout(new FlowLayout(FlowLayout.CENTER,400,20));
         divContent.add(divsearchBox);
@@ -491,8 +507,6 @@ public class HomeUI extends JFrame {
         divRepeatingGroup.setBackground(new Color(255, 255, 255));
 
         //DISPLAY LIST
-        Service service = new Service();
-        service.setUp();
         var users = service.AllUser(currentUser);
 
         //DISPLAY LIST
@@ -532,10 +546,7 @@ public class HomeUI extends JFrame {
             addUserButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    Service service = new Service();
-                    service.setUp();
                     service.addFriend(currentUser, user);
-                    dispose();
 
                 }
             });
@@ -549,10 +560,9 @@ public class HomeUI extends JFrame {
 
 
     }
-    private void logoutButton() {
+    private void logoutButton(Service service) {
 
-        LoginUI loginUI = new LoginUI();
-        Service service = new Service();
+        LoginUI loginUI = new LoginUI(service);
         service.setCurrentUser(null);
         dispose();
     }
