@@ -122,6 +122,7 @@ public class User {
                 "codUser=" + codUser +
                 ", nome='" + nome + '\'' +
                 ", email='" + email + '\'' +
+                ", senha=" + Arrays.toString(senha) +
                 ", amizade=" + amizade +
                 '}';
     }
