@@ -25,9 +25,6 @@ public class LoginUI extends JFrame {
     JLabel logoArroba = new JLabel(new ImageIcon("./src/main/resources/img/logowhite.png"));    //LOGOS DO SISTEMA
     ImageIcon logoErrorLogin = new ImageIcon("./src/main/resources/img/erro.gif");    //LOGOS DO SISTEMA
 
-
-
-
     public static void main(String[] args) {
 
         Service service = new Service();
@@ -38,8 +35,6 @@ public class LoginUI extends JFrame {
     }
     public LoginUI(Service service){
         Color color = new Color(59, 74, 178);
-
-
 
         divUser.setBackground(color);
         divUser.add(loginPlaceHolderUser).setForeground(Color.white);
@@ -62,7 +57,6 @@ public class LoginUI extends JFrame {
         divBtns.setBackground(color);
         divBtns.add(loginCreateAccount).setPreferredSize(new Dimension(150, 35));
         divBtns.add(loginButton).setPreferredSize(new Dimension(150, 35));
-
 
         sectionLogin.setLayout(new GridLayout(3, 3, 20, 25));
         sectionLogin.setBackground(color);
@@ -110,10 +104,6 @@ public class LoginUI extends JFrame {
                 createAccount(service);
             }
         });
-    }
-
-    private void index() {
-        dispose();
     }
     private void createAccount(Service service) {
         CreateAccountUI createAccountUI = new CreateAccountUI(service);

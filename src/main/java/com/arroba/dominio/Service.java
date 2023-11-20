@@ -4,7 +4,6 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import jakarta.persistence.Query;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
