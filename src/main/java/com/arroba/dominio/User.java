@@ -29,9 +29,6 @@ public class User {
     )
     private List<User> amizade = new ArrayList<>();
 
-
-
-
     public User() {
 
     }
@@ -99,7 +96,6 @@ public class User {
         amizade.remove(friend);
         friend.getAmizade().remove(this);
     }
-
 
     @Override
     public boolean equals(Object o) {

@@ -7,8 +7,6 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.List;
-
 
 public class HomeUI extends JFrame {
 
@@ -25,9 +23,7 @@ public class HomeUI extends JFrame {
     private JButton listUsereButton = new JButton("Meus amigos");
     private JButton findUsereButton = new JButton("Adicionar amigos");
     private JButton logoutButton = new JButton("Logout");
-
     JLabel logoArroba = new JLabel(new ImageIcon("./src/main/resources/img/arrobaiconwhite.png"));    //LOGOS DO SISTEMA
-
 
     public static void main(String[] args, User currentUser) {
         Service service = new Service();
@@ -108,8 +104,6 @@ public class HomeUI extends JFrame {
         });
 
     }
-
-
 
     //METODOS
     private void menu() {//METODO RESPONSAVEL POR CONSTRUIR O MENU
@@ -390,7 +384,7 @@ public class HomeUI extends JFrame {
         updateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                service.UpdateCurrentUser(loginUserName.getText(),loginUserEmail.getText(),loginPassword.getPassword(), currentUser);
+                service.updateCurrentUser(loginUserName.getText(),loginUserEmail.getText(),loginPassword.getPassword(), currentUser);
                 dispose();
                 HomeUI homeUI = new HomeUI(currentUser, service);
 
@@ -416,7 +410,7 @@ public class HomeUI extends JFrame {
         divRepeatingGroup.setBackground(new Color(255, 255, 255));
 
 
-        var users = service.ListUsersFriends(currentUser);
+        var users = service.listUsersFriends(currentUser);
 
         for (User user : users) {
             int idUser = user.getCodUser();
@@ -507,7 +501,7 @@ public class HomeUI extends JFrame {
         divRepeatingGroup.setBackground(new Color(255, 255, 255));
 
         //DISPLAY LIST
-        var users = service.AllUser(currentUser);
+        var users = service.allUser(currentUser);
 
         //DISPLAY LIST
 

@@ -54,14 +54,6 @@ public class Chat {
         User2 = user2;
     }
 
-//    public List<Message> getMessage() {
-//        return message;
-//    }
-//
-//    public void setMessage(List<Message> message) {
-//        this.message = message;
-//    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -62,7 +62,7 @@ public class Service {
 
     }
 
-    public User UpdateCurrentUser(String nome, String email, char[]  senha, User currentUser){
+    public User updateCurrentUser(String nome, String email, char[]  senha, User currentUser){
     var em = factory.createEntityManager();
     currentUser.setNome(nome);
     currentUser.setEmail(email);
@@ -76,7 +76,7 @@ public class Service {
     return currentUser;
 }
 
-    public List<User> AllUser(User currentUser){
+    public List<User> allUser(User currentUser){
         var em = factory.createEntityManager();
         String jpql = "SELECT u FROM User u WHERE u <> :currentUser AND u NOT IN (SELECT f FROM User currentUser JOIN currentUser.amizade f WHERE currentUser = :currentUser)";
         Query query = em.createQuery(jpql, User.class);
@@ -87,7 +87,7 @@ public class Service {
         return userList;
     }
 
-    public List<User> ListUsersFriends(User currentUser){
+    public List<User> listUsersFriends(User currentUser){
         var em = factory.createEntityManager();
 
         List<User> userList = currentUser.getAmizade();
