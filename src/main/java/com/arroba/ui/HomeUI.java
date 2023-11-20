@@ -148,7 +148,7 @@ public class HomeUI extends JFrame {
         divRepeatingGroup.setBackground(new Color(255, 255, 255));
 
         //DISPLAY LIST
-        var chats = service.listChats();
+        var chats = service.listChats(currentUser);
 
 
         for (Chat chat : chats) {
@@ -204,8 +204,16 @@ public class HomeUI extends JFrame {
     }
     private void chatInButton(Chat Chat, Service service, User currentUser) {
         removeContent();
+        User user1 = Chat.getUser1();
+        User user2 = Chat.getUser2();
+        String nameChat;
+        if(user1.getCodUser() == currentUser.getCodUser()){
+            nameChat = user2.getNome();
+        }else{
+            nameChat = user1.getNome();
+        }
 
-        jLabelPageHome.setText("Chat" + Chat);
+        jLabelPageHome.setText("Chat - " + nameChat);
         jLabelPageHome.setBackground(new Color(15, 173, 53));
 
         divContent.setLayout(new FlowLayout(FlowLayout.CENTER,400,20));
@@ -310,9 +318,7 @@ public class HomeUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 service.sendMessage(Chat,sendMsgBox.getText(),currentUser);
-
-
-
+                chatInButton(Chat,service,currentUser);
             }
         });
 
@@ -455,9 +461,9 @@ public class HomeUI extends JFrame {
 
                     if (confirmRemoveUser == JOptionPane.YES_OPTION) {
                         service.removeFriend(currentUser, user);
-                        dispose();
                         HomeUI homeUI = new HomeUI(currentUser, service);
                         listUsereButton(currentUser, service);
+                        dispose();
 
                     }
                 }
@@ -490,13 +496,7 @@ public class HomeUI extends JFrame {
         JTextField searchBox = new JTextField();
         searchBox.setColumns(30);
 
-        JButton searchButton = new JButton("Buscar");
-        JButton resetSearchButton = new JButton("Limpar");
-
         divsearchBox.add(jLabelPageHome);
-//        divsearchBox.add(searchBox);
-//        divsearchBox.add(searchButton);
-//        divsearchBox.add(resetSearchButton);
 
         divContent.setLayout(new FlowLayout(FlowLayout.CENTER,400,20));
         divContent.add(divsearchBox);
@@ -547,6 +547,9 @@ public class HomeUI extends JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     service.addFriend(currentUser, user);
+                    HomeUI homeUI = new HomeUI(currentUser, service);
+                    findUsereButton(currentUser, service);
+                    dispose();
 
                 }
             });

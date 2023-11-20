@@ -77,17 +77,15 @@ public class Service {
     return currentUser;
 }
 
-    // TODO: 20/11/23 Não pode aparecer os usuários que já são amigos
     public List<User> AllUser(User currentUser){
         var em = factory.createEntityManager();
-        String jpql = "SELECT u FROM User u WHERE u <> :currentUser";
+        String jpql = "SELECT u FROM User u WHERE u <> :currentUser AND u NOT IN (SELECT f FROM User currentUser JOIN currentUser.amizade f WHERE currentUser = :currentUser)";
         Query query = em.createQuery(jpql, User.class);
         query.setParameter("currentUser", currentUser);
 
         List<User> userList = query.getResultList();
 
         return userList;
-
     }
 
     public List<User> ListUsersFriends(User currentUser){
@@ -127,24 +125,41 @@ public class Service {
         em.close();
     }
 
-    // TODO: 20/11/23 Criar condição para que se o chat ja estiver criado, nao criar outro e só levar o usuario para o chat existente
     public Chat openCreateChat(User currentUser, User friend){
         var em = factory.createEntityManager();
 
-        Chat newChat = new Chat(null, currentUser, friend);
+        // Verifica se já existe um chat entre os dois usuários
+        String jpql = "SELECT c FROM Chat c WHERE " +
+                "(c.User1 = :currentUser AND c.User2 = :friend) OR " +
+                "(c.User1 = :friend AND c.User2 = :currentUser)";
 
-        em.getTransaction().begin();
-        em.persist(newChat);
-        em.getTransaction().commit();
+        Query query = em.createQuery(jpql, Chat.class);
+        query.setParameter("currentUser", currentUser);
+        query.setParameter("friend", friend);
 
-        return newChat;
+        List<Chat> existingChats = query.getResultList();
+
+        // Se não existir um chat, cria um novo
+        if (existingChats.isEmpty()) {
+            Chat newChat = new Chat(null, currentUser, friend);
+
+            em.getTransaction().begin();
+            em.persist(newChat);
+            em.getTransaction().commit();
+
+            return newChat;
+        } else {
+            // Se já existir um chat, retorna o chat existente
+            return existingChats.get(0);
+        }
     }
 
-    // TODO: 20/11/23 Terminar o listar chat pelo currentUser logado, ele atualmente vai puxar todos os chats 
-    public List<Chat> listChats(){
+    public List<Chat> listChats(User currentUser){
         var em = factory.createEntityManager();
-        String jpql = "SELECT c FROM Chat c";
+        String jpql = "SELECT c FROM Chat c WHERE " +
+                "(c.User1 = :currentUser OR c.User2 = :currentUser)";
         Query query = em.createQuery(jpql, Chat.class);
+        query.setParameter("currentUser", currentUser);
         List<Chat> chatList = query.getResultList();
         return chatList;
     }
