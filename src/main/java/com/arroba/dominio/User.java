@@ -18,7 +18,7 @@ public class User {
     private String email;
     private char[] senha;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
+    @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(
             name = "tbl_user_amizade",
             joinColumns = @JoinColumn(name = "User_codUser"),
@@ -85,11 +85,9 @@ public class User {
         this.amizade = amizade;
     }
     public void addAmizade(User friend){
-        if (!amizade.contains(friend)) {
+
             amizade.add(friend);
             friend.getAmizade().add(this);
-        }
-
 
     }
 
