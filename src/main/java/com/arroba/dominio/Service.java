@@ -100,14 +100,12 @@ public class Service {
     public void addFriend(User currentUser, User friend){
         var em = factory.createEntityManager();
 
-        em.getTransaction().begin();
-        currentUser.addAmizade(friend);
+            currentUser.addAmizade(friend);
 
-        currentUser = em.merge(currentUser);
-
-        em.persist(currentUser);
-        em.getTransaction().commit();
-        em.close();
+            em.getTransaction().begin();
+            em.merge(currentUser);
+            em.getTransaction().commit();
+            em.close();
 
     }
 
@@ -172,8 +170,6 @@ public class Service {
 
         return messages;
     }
-
-    // TODO: 20/11/23 Revisar codigo, pois nao deixa enviar mais de uma mensagem por chat, retorna que o codigo do chat nao pode ser duplicado por que é uma FK unica 
     public Message sendMessage(Chat chat, String descMessage, User currentUser){
         var em = factory.createEntityManager();
 

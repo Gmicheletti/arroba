@@ -3,11 +3,7 @@ package com.arroba.dominio;
 import jakarta.persistence.*;
 
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
-
+import java.util.*;
 
 
 @Entity
@@ -21,7 +17,8 @@ public class User {
 
     private String email;
     private char[] senha;
-    @ManyToMany(cascade = {CascadeType.ALL})
+
+    @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     @JoinTable(
             name = "tbl_user_amizade",
             joinColumns = @JoinColumn(name = "User_codUser"),
@@ -88,14 +85,19 @@ public class User {
         this.amizade = amizade;
     }
     public void addAmizade(User friend){
-        amizade.add(friend);
-        friend.getAmizade().add(this);
+        if (!amizade.contains(friend)) {
+            amizade.add(friend);
+            friend.getAmizade().add(this);
+        }
+
+
     }
 
     public void removeAmizade(User friend){
         amizade.remove(friend);
         friend.getAmizade().remove(this);
     }
+
 
     @Override
     public boolean equals(Object o) {
@@ -117,9 +119,6 @@ public class User {
         return "User{" +
                 "codUser=" + codUser +
                 ", nome='" + nome + '\'' +
-                ", email='" + email + '\'' +
-                ", senha=" + Arrays.toString(senha) +
-                ", amizade=" + amizade +
                 '}';
     }
 }
