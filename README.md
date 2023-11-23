@@ -57,7 +57,8 @@ Segue abaixo a documentação utilizada para modelar o banco, a criação do dia
 
 Segue abaixo o relatório final desenvolvido pela equipe descrevendo todo o processo de codificação, distribuição de etapas e dificuldades enfrentadas.
 
-[Relatório LP - Simulador de Rede Social.pdf](https://github.com/Gmicheletti/arroba/files/13453750/Relatorio.LP.-.Simulador.de.Rede.Social.pdf)
+[Relatório LP - Simulador de Rede Social.pdf](https://github.com/Gmicheletti/arroba/files/13453754/Relatorio.LP.-.Simulador.de.Rede.Social.pdf)
+
 
 
 ## Equipe
