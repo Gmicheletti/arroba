@@ -44,6 +44,7 @@ Busque por outros usuários e adicione-os à sua lista de amigos.
 # Executando o Projeto
 Clone o repositório.
 Abra o projeto em um ambiente de desenvolvimento Java.
+Crie um banco de dados local e atualize as credenciais no arquivo persistence.xml
 Execute a classe LoginUI para iniciar o sistema.
 
 Observação: Certifique-se de ter as bibliotecas necessárias configuradas para a execução do projeto.
