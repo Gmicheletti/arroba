@@ -56,19 +56,6 @@ Segue abaixo a documentação utilizada para modelar o banco, a criação do dia
 
 [Documentação - Figma](https://www.figma.com/file/SbPkeFRFPOa5pfUYONF5II/arrob%40?type=design&node-id=0%3A1&mode=design&t=3AOIqp9emLMyKUfm-1)
 
-Segue abaixo o relatório final desenvolvido pela equipe descrevendo todo o processo de codificação, distribuição de etapas e dificuldades enfrentadas.
-
-[Relatório LP - Simulador de Rede Social.pdf](https://github.com/Gmicheletti/arroba/files/13453754/Relatorio.LP.-.Simulador.de.Rede.Social.pdf)
-
-
-
-## Equipe
-- Arthur Meireles Dias
-- Carlos Jardel Alves de Souza
-- Guilherme Augusto Micheletti
-- Jefferson Luis Caetano
-- Lorena Cristina Ribeiro Nobre
-- Lucas Rodrigues Dias Nascimento  
 
 
 
